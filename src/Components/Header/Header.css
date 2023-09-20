@@ -1,0 +1,80 @@
+/* Header section*/
+
+.App-header {
+    background-color: #282c34;
+    min-height: 13vh;
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding-left: 10px;
+  }
+
+/* Logo section*/
+
+.header-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Logo {
+    display: flex;
+    width: 300px;
+}
+.reddit-logo {
+    color: red;
+    font-size: 50px;
+}
+
+span {
+    font-size: 35px;
+  }
+
+/* Searchbar section*/ 
+
+.Search-Bar {
+    width: 75%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+}
+
+input {
+    height: 2.5em;
+    width: 20em;
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 1rem;
+    padding-left: 10px;
+}
+
+
+
+.Search-icon {
+    color: red;
+    background-color: #282c34;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Search-button {
+    background-color: #282c34;
+    font-size: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}

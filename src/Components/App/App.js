@@ -1,16 +1,17 @@
 import React from 'react'
 import './App.css';
+import Header from '../Header/Header';
+import Card from '../Card/Card';
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>         
-           <p>          
-            <span style={{color: 'red'}}>Reddit</span> Me Now
-          </p>
-        </div>       
-      </header>
-    </div>
+    <>
+      <Header />
+      <main>
+        <Card />
+      </main>
+    </>
   );
 }
 
