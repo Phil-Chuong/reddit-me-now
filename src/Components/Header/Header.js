@@ -1,7 +1,9 @@
 import React from "react";
 import './Header.css'
 import { FaRedditSquare } from 'react-icons/fa';
-import { BiSearchAlt } from 'react-icons/bi';
+import SearchBar from "../Searchbar/Searchbar";
+
+
 
 function Header() {
     return (
@@ -14,21 +16,10 @@ function Header() {
                     </p>
                 </div>               
             </div>
-            <div className="Search-Bar">
-                <SearchBar className="Search"/>
-            </div>    
+            <SearchBar />  
         </header>
     )
 };
 
-function SearchBar() {
-    return (
-        <form>
-            <input type="text" placeholder="Search" >          
-            </input>
-            <button className="Search-button"><BiSearchAlt className="Search-icon" /></button>
-        </form>
-    )
-}
 
 export default Header;
