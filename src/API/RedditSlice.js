@@ -1,40 +1,43 @@
 
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
+
+export const fetchPosts = createAsyncThunk('post/fetchPosts', async () => {
+  try {
+  const response = await axios
+    .get('https://www.reddit.com/r/popular.json');
+  return response.data;
+  }catch (error) {
+    throw error;
+  }
+});
 
 const initialState = {
-  isLoading: false,
+  loading: false,
   posts: [],
   error: '',
 }
-
-
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', () => {
-  return axios
-  .get('https://www.reddit.com/r/popular.json')
-  .then((response) => response.data)
-})
-
 
 const RedditPostsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
-      state.isLoading = true
+      state.loading = true;
+      state.error = '';
     })
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
-      state.isLoading = false
-      state.posts = action.payload
-      state.error = ''
+      state.loading = false;
+      state.posts = action.payload;
+      state.error = '';
     })
     builder.addCase(fetchPosts.rejected, (state, action) => {
-      state.isLoading = false
-      state.posts = []
-      state.error = action.error.message
+      state.loading = false;
+      state.posts = [];
+      state.error = action.error.message;
     })
-  },
-})
+}})
 
 export default RedditPostsSlice.reducer;
