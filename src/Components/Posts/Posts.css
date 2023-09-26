@@ -1,7 +1,10 @@
 .card {
-   max-width: 500px;
-   height: auto;
+   max-width: 35em;
+   height: 40em;
    background-color: aqua;
+   margin: 20px;
+   display: flex;
+
   }
-  
+
  

@@ -9,7 +9,7 @@ function App() {
     <>
       <Header />
       <main>
-        <Posts />
+      <Posts />
       </main> 
     </>               
   );

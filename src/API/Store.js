@@ -3,6 +3,6 @@ import RedditPostsSlice from "./RedditSlice";
 
 export default configureStore({
     reducer: combineReducers({
-       posts: RedditPostsSlice
+       redditPosts: RedditPostsSlice
     })
 });
