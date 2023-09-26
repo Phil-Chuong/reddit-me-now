@@ -8,7 +8,7 @@ export const fetchPosts = createAsyncThunk('post/fetchPosts', async () => {
   try {
   const response = await axios
     .get('https://www.reddit.com/r/popular.json');
-  return response.data;
+  return response.data.children;
   }catch (error) {
     throw error;
   }

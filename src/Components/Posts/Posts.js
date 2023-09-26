@@ -24,7 +24,7 @@ const Posts = () => {
                 <ul>            
                     {post.Posts.map((post) => (
                     <li key={post.id}>
-                        {post.kind}{post.data}
+                        {post.data}
                     </li>
                     ))}
                 </ul>
