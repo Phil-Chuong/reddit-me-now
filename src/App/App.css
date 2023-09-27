@@ -2,6 +2,11 @@
   text-align: center;  
 }
 
-.App-link {
-  color: #61dafb;
+main {
+  background-color: rgb(85, 85, 91);
+
+}
+
+:root {
+  background-color: rgb(85, 85, 91);
 }

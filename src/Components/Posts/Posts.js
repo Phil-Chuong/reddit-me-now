@@ -3,9 +3,10 @@ import './Posts.css';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchPosts } from "../../API/RedditSlice";
-
-
-
+import { BiUpvote, BiDownvote } from "react-icons/bi";
+import { useState } from "react";
+import { TfiCommentAlt } from 'react-icons/tfi';
+import { RxDividerHorizontal } from 'react-icons/rx';
 
 const Posts = () => {    
     const posts = useSelector((state) => state.redditPosts.posts)
@@ -16,6 +17,21 @@ const Posts = () => {
     useEffect(() => {
       dispatch(fetchPosts())
     }, [dispatch]);
+
+    //Voting section
+    const [votedPosts, setVotedPosts] = useState({});
+
+    const handleVote = (postId, value) => {
+        // Check if the user has already voted on this post
+        if(votedPosts[postId]) {
+            return;
+        }
+
+        setVotedPosts({
+          ...votedPosts,
+          [postId]: value,
+        });
+      };
 
     if(loading) {
         return <div>
@@ -28,7 +44,7 @@ const Posts = () => {
             Error: {error}
         </div>
     }
-
+    
     return (
         <div className="posts-container"> 
             {posts.map((post) => (
@@ -36,11 +52,34 @@ const Posts = () => {
                 <li key={post.id}>
                     <section className="card-header">
                         <div className="title-name"><p>{post.title}</p></div>
-                        <div className="subreddit-name"><p>{post.subreddit}</p></div>
-                    </section>                  
+                        <hr></hr>
+                        <br></br>
+                    </section>
+                    <article>
+                        <img className='post-image' 
+                        src={post.url} alt='content' 
+                        onError={i => i.target.style.display='none'}/>
                     
-                    <br/>
-                    <img className='post-image' src={post.url} alt='content'/>
+                        <div><p><span className='subreddit-name'>Subredddit: </span>{post.subreddit}</p></div>
+                        <br></br>
+                        <div className="score-comment">
+                            <button 
+                            onClick={() => handleVote(post.id, 1)} 
+                            className={votedPosts[post.id] === 1 ? "vote-up disabled" : ''}
+                            disabled={votedPosts[post.id] === 1}><BiUpvote />
+                            </button>
+
+                            {post.score + (votedPosts[post.id] || 0)}
+                            
+                            <button 
+                            onClick={() => handleVote(post.id, -1)} 
+                            className={votedPosts[post.id] === -1 ? "vote-down disabled" : ''}
+                            disabled={votedPosts[post.id] === -1}><BiDownvote />
+                            </button>
+                            <button className="comment-button"><TfiCommentAlt /></button>
+                        </div>
+                    </article>                  
+                    
                 </li>
                 </div>
             ))}

@@ -19,8 +19,6 @@ input {
     padding-left: 10px;
 }
 
-
-
 .Search-icon {
     color: red;
     background-color: #282c34;
@@ -40,3 +38,7 @@ input {
     border: none;
     cursor: pointer;
 }
+
+button:hover {
+    color: white;
+  }

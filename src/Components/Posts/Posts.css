@@ -1,7 +1,7 @@
 .posts-container {
    max-width: 55em;
    height: auto;
-   background-color: aqua;
+   background-color: #282c34;
    margin: 20px;
    display: flex;
    flex-wrap: wrap;
@@ -18,25 +18,35 @@
   .card {
    width: 55em;
    height: auto;
-   background-color: #282c34;
+   background-color: rgb(85, 85, 91);
    margin-bottom: 15px;
    display: flex;
    flex-wrap: wrap;
-   color: red;
+   color: whitesmoke;
    object-fit: contain;
    border-radius: 10px;
    padding: 10px;
   }
 
-  .post-header {
-   display: inline-flex;
-
+  .card-header {
+   min-width: 100%;
+   background-color: blue;
+   display: flex;
+   flex-wrap: wrap;
   }
 
   .title-name {
+   width: 100%;
    display: flex;
    justify-content: left;
    align-items: center;
+   background-color: aqua;
+  }
+
+  .subreddit-name {
+   color: red;
+   font-size: medium;
+   
   }
 
  img {
@@ -44,4 +54,35 @@
    max-height: 100%;
    display: block;
    border-radius: 10px;
+ }
+
+ .score {
+   display: flex;
+ }
+
+ button {
+   color: red;
+   background-color: #282c34;
+   font-size: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   padding:3px;
+   border-radius: 5px;
+ }
+ button:hover {
+   color: white;
+ }
+
+ .score-comment {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: left;
+   background-color: aqua;
+ }
+
+ .comment-button {
+   
+   
  }
