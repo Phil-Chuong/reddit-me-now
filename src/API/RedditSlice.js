@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-//reddit limit to 10
+//reddit limit to 20
 const limit = 10;
 
 //action 
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
+export const fetchPosts = createAsyncThunk('redditPosts/fetchPosts', async () => {
   try {
   const response = await axios
     .get(`https://www.reddit.com/r/popular.json?limit=${limit}`);
@@ -25,6 +25,7 @@ const RedditPostsSlice = createSlice({
     loading: false,
     posts: [],
     error: false,
+
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
@@ -39,7 +40,8 @@ const RedditPostsSlice = createSlice({
       state.loading = false;
       state.error = action.error;
     })
-  }}
+    }
+  }
 )
 
 export const { pending, fulfilled, rejected } = RedditPostsSlice.actions;

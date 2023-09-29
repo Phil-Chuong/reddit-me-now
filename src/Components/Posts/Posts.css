@@ -30,17 +30,18 @@
 
   .card-header {
    min-width: 100%;
-   background-color: blue;
+   background-color: rgb(85, 85, 91);
    display: flex;
    flex-wrap: wrap;
   }
 
   .title-name {
-   width: 100%;
+   min-width: auto;
    display: flex;
    justify-content: left;
    align-items: center;
-   background-color: aqua;
+   background-color: rgb(85, 85, 91);
+   padding: 5px;
   }
 
   .subreddit-name {
@@ -79,10 +80,12 @@
    display: flex;
    flex-wrap: wrap;
    justify-content: left;
-   background-color: aqua;
+   background-color: rgb(85, 85, 91);
+   align-items: end;
  }
 
  .comment-button {
-   
-   
+  background-color: #282c34;
+  display: flex;
+  justify-content: right;
  }

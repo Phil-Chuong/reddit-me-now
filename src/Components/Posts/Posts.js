@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Posts.css';
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import { fetchPosts } from "../../API/RedditSlice";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { useState } from "react";
 import { TfiCommentAlt } from 'react-icons/tfi';
-import { RxDividerHorizontal } from 'react-icons/rx';
 
 const Posts = () => {    
     const posts = useSelector((state) => state.redditPosts.posts)
@@ -18,55 +16,58 @@ const Posts = () => {
       dispatch(fetchPosts())
     }, [dispatch]);
 
-    //Voting section
+    // Voting section
     const [votedPosts, setVotedPosts] = useState({});
 
     const handleVote = (postId, value) => {
-        // Check if the user has already voted on this post
-        if(votedPosts[postId]) {
-            return;
-        }
+        setVotedPosts((prevVotes) => {
+            const newVotes = { ...prevVotes };
+        
+            if (newVotes[postId] === value) {
+              // If the user clicks the same vote button again, remove their vote
+              delete newVotes[postId];
+            } else {
+              // Otherwise, update their vote
+              newVotes[postId] = value;
+            }
+        
+            return newVotes;
+          });
+    };
 
-        setVotedPosts({
-          ...votedPosts,
-          [postId]: value,
-        });
-      };
-
-    if(loading) {
-        return <div>
-            Loading....
-        </div>
+    if (loading) {
+        return <div>Loading....</div>
     }
 
-    if(error) {
-        return <div>
-            Error: {error}
-        </div>
+    if (error) {
+        return <div>Error: {error}</div>
     }
-    
+
     return (
         <div className="posts-container"> 
             {posts.map((post) => (
-                <div className="card">
-                <li key={post.id}>
+                <div className="card" key={post.id}>
                     <section className="card-header">
                         <div className="title-name"><p>{post.title}</p></div>
-                        <hr></hr>
-                        <br></br>
+                        <br />
+                        <hr />
                     </section>
                     <article>
                         <img className='post-image' 
                         src={post.url} alt='content' 
-                        onError={i => i.target.style.display='none'}/>
+                        onError={(i) => i.target.style.display='none'} />
+                        <hr />
                     
-                        <div><p><span className='subreddit-name'>Subredddit: </span>{post.subreddit}</p></div>
-                        <br></br>
+                        <div>
+                            <p><span className='subreddit-name'>Subreddit: </span>r/{post.subreddit}</p>
+                        </div>
+                        <br />
                         <div className="score-comment">
                             <button 
                             onClick={() => handleVote(post.id, 1)} 
                             className={votedPosts[post.id] === 1 ? "vote-up disabled" : ''}
-                            disabled={votedPosts[post.id] === 1}><BiUpvote />
+                            disabled={votedPosts[post.id] === 1}>
+                                <BiUpvote />
                             </button>
 
                             {post.score + (votedPosts[post.id] || 0)}
@@ -74,13 +75,18 @@ const Posts = () => {
                             <button 
                             onClick={() => handleVote(post.id, -1)} 
                             className={votedPosts[post.id] === -1 ? "vote-down disabled" : ''}
-                            disabled={votedPosts[post.id] === -1}><BiDownvote />
+                            disabled={votedPosts[post.id] === -1}>
+                                <BiDownvote />
                             </button>
-                            <button className="comment-button"><TfiCommentAlt /></button>
+
+                            {/* Add your comments button here */}
+                            <div className="comment-container">
+                                <button className="comment-button">
+                                    <TfiCommentAlt />                              
+                                </button>
+                            </div>
                         </div>
-                    </article>                  
-                    
-                </li>
+                    </article>                                     
                 </div>
             ))}
         </div>      
@@ -88,3 +94,4 @@ const Posts = () => {
 }
 
 export default Posts;
+
