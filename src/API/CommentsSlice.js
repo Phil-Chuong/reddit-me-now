@@ -2,44 +2,43 @@
  import axios from "axios";
  import { createAsyncThunk } from "@reduxjs/toolkit";
 
-  const limit = 10;
+const initialState = {
+  loading: false,
+  comments: [],
+  error: '',
+}
 
-  export const fetchComments = createAsyncThunk('redditComments/fetchComments', async (permalink) => {
-       try {
+const limit = 10;
+export const fetchComments = createAsyncThunk('redditComments/fetchComments', async (subreddit) => {
        const response = await axios
-         .get(`https://www.reddit.com/r/${permalink}.json?limit=${limit}`);
-       return response.data.data[1].children.map((comment) => comment.data);
-       }catch (error) {
-         throw (error);
-       }
-    });
+      .get(`https://www.reddit.com/r/${subreddit}/comments.json?limit=${limit}`);
+      // console.log(response)
+
+    return response.data[1].data.children.map((comment) => comment.data)
+    }
+  );
 
 
    //create slice & reducer
  const RedditCommentsSlice = createSlice({
      name: 'redditComments',
-     initialState: {
-       loading: false,
-       error: false,
-       comments: [],
-  
-     },
+     initialState,
      extraReducers: (builder) => {
-       builder.addCase(fetchComments.pending, (state) => {
+       builder
+       .addCase(fetchComments.pending, (state) => {
          state.loading = true;
-         state.error = false;
        })
-       builder.addCase(fetchComments.fulfilled, (state, action) => {
+      .addCase(fetchComments.fulfilled, (state, action) => {
          state.loading = false;
          state.comments = action.payload;
+         state.error = '';
        })
-       builder.addCase(fetchComments.rejected, (state, action) => {
+       .addCase(fetchComments.rejected, (state, action) => {
          state.loading = false;
          state.error = action.error;
-       })
-       },
+       });
+    },
  })
   
-   export const { fetchCommentsPending, fetchCommentsFulfilled, fetchCommentsRejected } = RedditCommentsSlice.actions;
-   export default RedditCommentsSlice.reducer;
+export default RedditCommentsSlice.reducer;
 

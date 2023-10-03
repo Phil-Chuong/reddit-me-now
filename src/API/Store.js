@@ -4,7 +4,7 @@ import RedditCommentsSlice from "./CommentsSlice";
 
  const store = configureStore({
     reducer: {
-       redditPosts: RedditPostsSlice,
+       redditPosts: RedditPostsSlice,     
        redditComments: RedditCommentsSlice,
     }
 });

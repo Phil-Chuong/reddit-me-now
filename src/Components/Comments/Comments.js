@@ -4,15 +4,15 @@ import { fetchComments } from "../../API/CommentsSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-    const Comments = (permalink) => {   
+const Comments = ({subreddit}) => {   
     const comments = useSelector((state) => state.redditComments.comments)
     const loading = useSelector((state) => state.redditComments.loading);
     const error = useSelector((state) => state.redditComments.error);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchComments({permalink}))
-      }, [dispatch, permalink]);
+        dispatch(fetchComments({subreddit}));
+      }, [dispatch, subreddit]);
 
       if(loading) {
         return <div>

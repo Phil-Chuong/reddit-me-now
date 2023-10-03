@@ -1,8 +1,8 @@
 .posts-container {
-   max-width: 55em;
+  width: 100%;
    height: auto;
    background-color: #282c34;
-   margin: 20px;
+   margin: 30px;
    display: flex;
    flex-wrap: wrap;
    border: 2px solid red;
@@ -10,18 +10,13 @@
    border-radius: 10px;
   }
 
-  li {
-   list-style-type: none;
-   display: block;
-   
-  }
   .card {
-   width: 55em;
+   width: 97%;
    height: auto;
    background-color: rgb(85, 85, 91);
    margin-bottom: 15px;
    display: flex;
-   flex-wrap: wrap;
+  flex-wrap: wrap;
    color: whitesmoke;
    object-fit: contain;
    border-radius: 10px;
@@ -36,7 +31,7 @@
   }
 
   .title-name {
-   min-width: auto;
+   width: 100%;
    display: flex;
    justify-content: left;
    align-items: center;
@@ -50,11 +45,26 @@
    
   }
 
+  .post-info {
+    width: 100%;
+    height: auto;
+    background-color: rgb(85, 85, 91);
+  }
+
  img {
    max-width: 100%;
    max-height: 100%;
    display: block;
    border-radius: 10px;
+ }
+
+article {
+  width: 100%;
+}
+ .scoreboard-container { 
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
  }
 
  .score {
@@ -81,11 +91,12 @@
    flex-wrap: wrap;
    justify-content: left;
    background-color: rgb(85, 85, 91);
-   align-items: end;
+   align-items: center;
+   margin-right: auto;
  }
 
  .comment-button {
   background-color: #282c34;
   display: flex;
-  justify-content: right;
+  
  }

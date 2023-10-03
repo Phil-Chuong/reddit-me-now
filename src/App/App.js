@@ -2,7 +2,8 @@ import React from 'react'
 import './App.css';
 import Header from '../Components/Header/Header';
 import Posts from '../Components/Posts/Posts';
-// import Comments from '../Components/Comments/comments';
+import Subreddit from '../Components/Subreddit/Subreddit';
+
 
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
       <Header />
       <main>
       <Posts />
-      {/* <Comments /> */}
+      <Subreddit />
       </main> 
+      
     </>               
   );
 }
