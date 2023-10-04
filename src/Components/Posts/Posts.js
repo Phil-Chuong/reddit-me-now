@@ -55,7 +55,7 @@ const Posts = () => {
     }
 
     return (
-        <div className="posts-container">
+        <div className="posts-container-2">
             {searchResults && searchResults.length > 0 ? (
                 <div>
                     {searchResults.map((result) => (
@@ -66,21 +66,22 @@ const Posts = () => {
                     ))}
                 </div>
             ) : (
-                <div>
+                <div className="posts-container">
                     {posts.map((post) => (                      
                         <div className="card" key={post.id}>
                             <section className="card-header">
                                 <div className="title-name"><p>{post.title}</p></div>
-                                <hr></hr>
-                                <br />
-                                <div className="post-info"><p>{post.selftext}</p></div>
+                                    <hr></hr>
+                                    <br />
+                                <div className="post-info">
+                                    <p>{post.selftext}</p>
+                                    </div>
                             </section>
-                            <article>
-                                
+                            <article>                               
                                 <img className='post-image'
                                     src={post.url} alt='content'
                                     onError={(i) => i.target.style.display = 'none'} />
-                                <br />
+                                    <br />
                                 <div>
                                     <p><span className='subreddit-name'>Subreddit: </span>r/{post.subreddit}</p>
                                 </div>
@@ -104,7 +105,7 @@ const Posts = () => {
                                         </button>
                                     </div>
 
-                                {/* Add your comments button here */}
+                                    {/* Add your comments button here */}
                                     <div className="comment-container">
                                         <button className="comment-button" 
                                         onClick={()=> toggleComments(post.id)}>
@@ -113,8 +114,8 @@ const Posts = () => {
                                         </button> 
                                     </div>
                                 </aside>
-                                {/* Display comments if the showComments state is true */}
-                                {showComments[post.id] && (
+                                    {/* Display comments if the showComments state is true */}
+                                    {showComments[post.id] && (
                                   <div className="comments-container">
                                     <Comments permalink={post.permalink} />
                                   </div>

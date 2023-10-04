@@ -3,6 +3,7 @@ import React from "react";
 import { fetchComments } from "../../API/CommentsSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import './Comments.css';
 
 const Comments = ({permalink}) => {   
     const comments = useSelector((state) => state.redditComments.comments)
@@ -30,11 +31,15 @@ const Comments = ({permalink}) => {
 
     return (
           
-         <div >
+         <div className="comments-treads">
              {comments.map((comment) => (
-                 <div key={comment.id}>
-                 <p>{comment.body}</p>
+                 <div key={comment.id} className="replies-container" >
+                    <ul className="reddit-id">{comment.id}
+                        <li className="replies">{comment.body}</li> 
+                    </ul>
+                    <br></br>                 
                  </div>
+
              ))}
          </div>
     );

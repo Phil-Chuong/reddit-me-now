@@ -1,42 +1,61 @@
+*{
+  box-sizing: border-box;
+}
+
 .posts-container {
-  width: 100%;
+   width: 100%;
    height: auto;
    background-color: #282c34;
-   margin: 30px;
    display: flex;
    flex-wrap: wrap;
-   border: 2px solid red;
-   padding: 15px;
+   padding: 2rem;
    border-radius: 10px;
   }
 
+  .posts-container-2 {
+    width: 100%;
+    height: auto;
+    background-color: #282c34;
+    margin: 2rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1.5px solid red;
+    border-radius: 10px;
+    margin-top: 5rem;
+   }
+
   .card {
-   width: 97%;
+   width: 100%;
    height: auto;
    background-color: rgb(85, 85, 91);
-   margin-bottom: 15px;
+   margin: 1rem 5rem;
    display: flex;
-  flex-wrap: wrap;
+   flex-wrap: wrap;
    color: whitesmoke;
-   object-fit: contain;
    border-radius: 10px;
    padding: 10px;
+ 
   }
 
   .card-header {
-   min-width: 100%;
+   /* min-width: 100%; */
    background-color: rgb(85, 85, 91);
    display: flex;
    flex-wrap: wrap;
   }
 
   .title-name {
-   width: 100%;
+   /* width: 100%; */
    display: flex;
    justify-content: left;
    align-items: center;
    background-color: rgb(85, 85, 91);
    padding: 5px;
+   font-size: 15px;
+  }
+
+  .title-name p {
+    font-size: 1.5rem;
   }
 
   .subreddit-name {
@@ -49,6 +68,10 @@
     width: 100%;
     height: auto;
     background-color: rgb(85, 85, 91);
+    border-radius: 10px;
+    padding: 1em;
+    color: #282c34;
+    font-size: 1.1rem;
   }
 
  img {
@@ -68,6 +91,7 @@ article {
  }
 
  .score {
+   width: 100%;
    display: flex;
  }
 

@@ -13,7 +13,7 @@ function App() {
       <main>
       <Posts />
       <Subreddit />
-      </main>       
+      </main>        
     </>               
   );
 }

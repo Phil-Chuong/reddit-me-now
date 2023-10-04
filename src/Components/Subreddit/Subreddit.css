@@ -1,17 +1,22 @@
+*{
+    box-sizing: border-box;
+  }
+
 .subreddit-container {
-    width: 100%;
-    height: auto;
-    background-color: rgb(11, 11, 237);
+    width: 30%;
+    background-color: rgb(85, 85, 91);
     display: flex;
     flex-wrap: wrap;
+    margin-top: 3rem;
+    margin-right: 2rem;
 }
 
 .subreddit-users {
     width: 100%;
     height: auto;
-    margin: 30px;
-    background-color: rgb(9, 215, 102);
-    border: 2px solid red;
+    margin: 2rem 1rem;
+    background-color: #282c34;
+    border: 1.5px solid red;
     padding: 15px;
     border-radius: 10px;
 }
