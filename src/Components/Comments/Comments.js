@@ -12,7 +12,7 @@ const Comments = ({permalink}) => {
 
     useEffect(() => {
         console.log(permalink)
-        dispatch(fetchComments({permalink}));
+        dispatch(fetchComments(permalink));
       }, [dispatch, permalink]);
 
       if(loading) {

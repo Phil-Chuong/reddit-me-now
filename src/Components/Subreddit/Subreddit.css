@@ -1,7 +1,7 @@
 .subreddit-container {
-    width: 50%;
+    width: 100%;
     height: auto;
-    background-color: rgb(85, 85, 91);
+    background-color: rgb(11, 11, 237);
     display: flex;
     flex-wrap: wrap;
 }
@@ -10,7 +10,7 @@
     width: 100%;
     height: auto;
     margin: 30px;
-    background-color: bisque;
+    background-color: rgb(9, 215, 102);
     border: 2px solid red;
     padding: 15px;
     border-radius: 10px;
