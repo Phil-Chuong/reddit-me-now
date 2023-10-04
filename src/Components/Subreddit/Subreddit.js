@@ -1,18 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Subreddit.css';
+import { fetchSubredditData } from '../../API/SubredditSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-function Subreddit() {
+const Subreddit = () => {
+  const subredditData = useSelector((state) => state.redditsSub.reddits);
+  const loading = useSelector((state) => state.redditsSub.loading);
+  const error = useSelector((state) => state.redditsSub.error);
+  const dispatch = useDispatch();
 
-    return (
-        <div className='subreddit-container'>
-            <div className='subreddit-users'>
-                <p>Here the Subreddit goes</p>
-            </div>
-            
+  useEffect(() => {
+    dispatch(fetchSubredditData());
+  }, [dispatch]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-        </div>
-    )
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  return (
+    <div>
+      <h1>Posts from Reddit</h1>
+      <ul>
+        {subredditData.map((post) => (
+          <li key={post.data.id}>{post.data.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Subreddit;
+

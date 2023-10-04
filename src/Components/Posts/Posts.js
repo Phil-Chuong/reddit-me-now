@@ -99,8 +99,8 @@ const Posts = () => {
                                     <div className="comment-container">
                                         <button className="comment-button">
                                         <TfiCommentAlt />
-                                        <Comments permalink={post.permalink}/>
                                         </button>
+                                        <Comments permalink={post.permalink}/>
                                     </div>
                                 </aside>
                             </article>

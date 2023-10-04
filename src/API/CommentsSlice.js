@@ -8,15 +8,20 @@ const initialState = {
   error: '',
 }
 
-const limit = 10;
-export const fetchComments = createAsyncThunk('redditComments/fetchComments', async (subreddit) => {
-       const response = await axios
-      .get(`https://www.reddit.com/r/${subreddit}/comments.json?limit=${limit}`);
-      // console.log(response)
+
+export const fetchComments = createAsyncThunk('redditComments/fetchComments', async (permalink) => {
+       
+  try{
+    const response = await axios
+    .get(`https://www.reddit.com${permalink}.json`);
+    console.log(response);
 
     return response.data[1].data.children.map((comment) => comment.data)
+    } catch (err) {
+      throw err;
     }
-  );
+  }
+);
 
 
    //create slice & reducer
@@ -39,6 +44,7 @@ export const fetchComments = createAsyncThunk('redditComments/fetchComments', as
        });
     },
  })
-  
+
+ export const { pending, fulfilled, rejected } = RedditCommentsSlice.actions;
 export default RedditCommentsSlice.reducer;
 

@@ -16,9 +16,9 @@ export const fetchPosts = createAsyncThunk('redditPosts/fetchPosts', async () =>
   }
 });
 
- export const searchPosts = createAsyncThunk('redditPosts/searchPosts', async (query) => {
+ export const searchPosts = createAsyncThunk('redditPosts/searchPosts', async (term) => {
    try {
-     const response = await axios.get(`https://www.reddit.com/subreddits/search.json?q=${query}`);
+     const response = await axios.get(`https://www.reddit.com/subreddits/search.json?q=${term}`);
      return response.data.data.children.map((post) => post.data);
    } catch (error) {
      throw error;
