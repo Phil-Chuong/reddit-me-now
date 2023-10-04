@@ -37,6 +37,15 @@ const Posts = () => {
           });
     };
 
+    const [showComments, setShowComments] = useState({});
+
+    const toggleComments = (postId) => {
+      setShowComments((prevState) => ({
+        ...prevState,
+        [postId]: !prevState[postId],
+      }));
+    };
+
     if (loading) {
         return <div>Loading....</div>
     }
@@ -64,7 +73,7 @@ const Posts = () => {
                                 <div className="title-name"><p>{post.title}</p></div>
                                 <hr></hr>
                                 <br />
-                                <div className="post-info"><p>{post.selftext}{post.permalink}</p></div>
+                                <div className="post-info"><p>{post.selftext}</p></div>
                             </section>
                             <article>
                                 
@@ -97,12 +106,19 @@ const Posts = () => {
 
                                 {/* Add your comments button here */}
                                     <div className="comment-container">
-                                        <button className="comment-button">
-                                        <TfiCommentAlt />
-                                        </button>
-                                        <Comments permalink={post.permalink}/>
+                                        <button className="comment-button" 
+                                        onClick={()=> toggleComments(post.id)}>
+                                         <TfiCommentAlt />  
+                                         {showComments[post.id] ? "" : ""}
+                                        </button> 
                                     </div>
                                 </aside>
+                                {/* Display comments if the showComments state is true */}
+                                {showComments[post.id] && (
+                                  <div className="comments-container">
+                                    <Comments permalink={post.permalink} />
+                                  </div>
+                                )}
                             </article>
                         </div>                                  
                     ))}

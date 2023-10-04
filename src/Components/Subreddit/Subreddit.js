@@ -22,9 +22,9 @@ const Subreddit = () => {
   }
 
   return (
-    <div>
+    <div className='subreddit-container'>
       <h1>Posts from Reddit</h1>
-      <ul>
+      <ul className='subreddit-users'>
         {subredditData.map((post) => (
           <li key={post.data.id}>{post.data.title}</li>
         ))}
