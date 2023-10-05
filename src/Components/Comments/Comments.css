@@ -1,13 +1,15 @@
 .replies-container {
     width: 100%;
     height: auto;
-    background-color: #0a53e5;
+    background-color: rgb(188, 39, 39);
     margin: 2rem;
     padding: 1rem;
+    box-shadow: 5px 5px 10px 0px rgb(208, 215, 227);
 }
 
 .reddit-id {
-    color: red;
+    color: #282c34;
+
 }
 
 .replies {

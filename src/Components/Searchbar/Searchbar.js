@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import './Searchbar.css';
 import { BiSearchAlt } from 'react-icons/bi';
 import { useDispatch } from "react-redux";
-import searchPost from "../../API/RedditSlice";
-
+import { searchPosts } from "../../API/RedditSlice";
 
 
 function SearchBar() {
+
     const [searchResults, setSearchResults] = useState('');
     const dispatch = useDispatch();
 
     const handleSearch = () => {
-        dispatch(searchPost(searchResults));
+        dispatch(searchPosts(searchResults));
     }
 
     return (

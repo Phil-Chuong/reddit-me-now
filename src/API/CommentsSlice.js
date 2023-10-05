@@ -8,7 +8,6 @@ const initialState = {
   error: '',
 }
 
-
 export const fetchComments = createAsyncThunk('redditComments/fetchComments', async (permalink) => {
        
   try{

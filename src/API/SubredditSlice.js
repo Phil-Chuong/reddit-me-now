@@ -7,11 +7,10 @@ const initialState = {
   error: '',
 }
 
-
-export const fetchSubredditData = createAsyncThunk('redditsSub, fetchSubredditData', async () => {
+export const fetchSubredditData = createAsyncThunk('redditsSub/fetchSubredditData', async () => {
   try {
-    const response = await axios.get(`https://www.reddit.com/subreddit.json`);
-    return response.data.data.children; // This will contain an array of posts on the subreddit
+    const response = await axios.get(`https://www.reddit.com/subreddits.json`);
+    return response.data.data.children.map((subreddit) => subreddit.data); // This will contain an array of posts on the subreddit
   } catch (error) {
     throw error;
   }
@@ -27,7 +26,7 @@ const RedditsSubsSlice = createSlice({
     })
    .addCase(fetchSubredditData.fulfilled, (state, action) => {
       state.loading = false;
-      state.comments = action.payload;
+      state.reddits = action.payload;
       state.error = '';
     })
     .addCase(fetchSubredditData.rejected, (state, action) => {

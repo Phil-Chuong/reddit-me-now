@@ -55,7 +55,7 @@ const Posts = () => {
     }
 
     return (
-        <div className="posts-container-2">
+        <div className="posts-container">
             {searchResults && searchResults.length > 0 ? (
                 <div>
                     {searchResults.map((result) => (
@@ -66,12 +66,14 @@ const Posts = () => {
                     ))}
                 </div>
             ) : (
-                <div className="posts-container">
+                <div className="posts-container-2">
                     {posts.map((post) => (                      
-                        <div className="card" key={post.id}>
+                        <div className='card-container' key={post.id}>
                             <section className="card-header">
+                                <div><p><span className='subreddit-name'>Subreddit: </span>{post.subreddit}</p></div>
+                                <br></br>
                                 <div className="title-name"><p>{post.title}</p></div>
-                                    <hr></hr>
+                                    
                                     <br />
                                 <div className="post-info">
                                     <p>{post.selftext}</p>
@@ -83,7 +85,7 @@ const Posts = () => {
                                     onError={(i) => i.target.style.display = 'none'} />
                                     <br />
                                 <div>
-                                    <p><span className='subreddit-name'>Subreddit: </span>r/{post.subreddit}</p>
+                                    <p><span className='subreddit-name'>Author: </span>r/{post.author}</p>
                                 </div>
                                 <br />
                                 <aside className="scoreboard-container">
@@ -103,6 +105,9 @@ const Posts = () => {
                                             disabled={votedPosts[post.id] === -1}>
                                             <BiDownvote />
                                         </button>
+                                    </div>
+                                    <div className="num-comments">
+                                        {post.num_comments}
                                     </div>
 
                                     {/* Add your comments button here */}

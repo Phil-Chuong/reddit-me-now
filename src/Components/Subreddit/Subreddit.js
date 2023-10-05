@@ -4,35 +4,45 @@ import { fetchSubredditData } from '../../API/SubredditSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Subreddit = () => {
-  // const subredditData = useSelector((state) => state.redditsSub.reddits);
-  // const loading = useSelector((state) => state.redditsSub.loading);
-  // const error = useSelector((state) => state.redditsSub.error);
-  // const dispatch = useDispatch();
+  const subreddits = useSelector((state) => state.redditsSub.reddits);
+  const loading = useSelector((state) => state.redditsSub.loading);
+  const error = useSelector((state) => state.redditsSub.error);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchSubredditData());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchSubredditData());
+  }, [dispatch]);
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  // if (error) {
-  //   return <div>Error: {error.message}</div>;
-  // }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
+
+
+  const handleUserHomePage = () => {
+    return 
+  }
+  
   return (
-      <div className='subreddit-container'>
-              
-        <div className='subreddit-users'>
-        <p>Am over here...</p>  
-            <h1>Posts from Reddit</h1>
-            {/* <ul>
-              {subredditData.map((post) => (
-            <li key={post.data.id}>{post.data.title}</li>
-            ))}
-          </ul> */}
-        </div>      
+    <div className='subreddit-container'>
+      <div className='subreddit-list'>
+        <h1>Subreddits</h1>
+        <br></br>
+        <ul>
+          {subreddits.map((subreddit) => (
+            <li key={subreddit.id} className='subreddit-li'>
+              <button className='subreddit-button'onClick={handleUserHomePage}>
+                <img src={subreddit.icon_img} alt='' className='users-icon'/>               
+                {subreddit.display_name} 
+              </button>                                   
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

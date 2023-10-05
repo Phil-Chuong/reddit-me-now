@@ -3,7 +3,7 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 //reddit limit to 20
-const limit = 10;
+const limit = 20;
 
 //action 
 export const fetchPosts = createAsyncThunk('redditPosts/fetchPosts', async () => {
@@ -16,14 +16,15 @@ export const fetchPosts = createAsyncThunk('redditPosts/fetchPosts', async () =>
   }
 });
 
- export const searchPosts = createAsyncThunk('redditPosts/searchPosts', async (term) => {
-   try {
-     const response = await axios.get(`https://www.reddit.com/subreddits/search.json?q=${term}`);
-     return response.data.data.children.map((post) => post.data);
-   } catch (error) {
-     throw error;
-   }
- });
+export const searchPosts = createAsyncThunk('redditPosts/searchPosts', async (searchQuery) => {
+  try {
+    const response = await axios.get(`https://www.reddit.com/search.json?q=${searchQuery}`);
+    return response.data.data.children.map((post) => post.data);
+  } catch (error) {
+    throw error;
+  }
+});
+
 
 
 //create slice & reducer
@@ -51,21 +52,11 @@ const RedditPostsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(searchPosts.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.searchResults = [];
-      })
       .addCase(searchPosts.fulfilled, (state, action) => {
         state.loading = false;
-        state.searchResults = action.payload;
+        state.searchPosts = action.payload.data;
         state.error = null;
       })
-      .addCase(searchPosts.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-        state.searchResults = [];
-      });
   }
 });
 
