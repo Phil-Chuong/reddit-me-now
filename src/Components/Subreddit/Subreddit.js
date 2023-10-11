@@ -10,7 +10,7 @@ const Subreddit = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchSubredditData());
+      dispatch(fetchSubredditData());
   }, [dispatch]);
 
   if (loading) {
@@ -21,9 +21,9 @@ const Subreddit = () => {
     return <div>Error: {error.message}</div>;
   }
 
-
-
-  const handleUserHomePage = () => {
+ 
+  
+const handleUserHomePage = () => {
     return 
   }
   
@@ -32,18 +32,20 @@ const Subreddit = () => {
       <div className='subreddit-list'>
         <h1>Subreddits</h1>
         <br></br>
-        <ul>
+        <div className='subreddit-items'>
+          <ul>
           {subreddits.map((subreddit) => (
-            <li key={subreddit.id} className='subreddit-li'>
-              <button className='subreddit-button'onClick={handleUserHomePage}>
-                <img src={subreddit.icon_img} alt='' className='users-icon'/>               
-                {subreddit.display_name} 
-              </button>                                   
-            </li>
-          ))}
-        </ul>
+              <li key={subreddit.id} className='subreddit-li'>
+                <button className='subreddit-button'onClick={handleUserHomePage}>
+                  <img src={subreddit.icon_img} alt='' className='users-icon'/>               
+                  <p className='subreddit-title'>{subreddit.display_name}</p>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>        
       </div>
-    </div>
+          </div>
   );
 };
 

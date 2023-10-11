@@ -1,14 +1,17 @@
 .replies-container {
     width: 100%;
     height: auto;
-    background-color: rgb(188, 39, 39);
+    display: flex;
+    background-color: rgb(192, 27, 27);
     margin: 2rem;
     padding: 1rem;
-    box-shadow: 5px 5px 10px 0px rgb(208, 215, 227);
+    box-shadow: 5px 5px 10px 0px #054f9d;
 }
 
 .reddit-id {
-    color: #282c34;
+    color:#064282;
+    font-weight: 700;
+    font-size: 2rem;
 
 }
 

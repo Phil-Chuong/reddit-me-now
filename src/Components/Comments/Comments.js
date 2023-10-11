@@ -34,8 +34,8 @@ const Comments = ({permalink}) => {
          <div className="comments-treads">
              {comments.map((comment) => (
                  <div key={comment.id} className="replies-container" >
-                    <ul className="reddit-id">{comment.id}
-                        <li className="replies">{comment.body}</li>
+                    <ul className="reddit-id">{comment.author}
+                        <li className="replies"><br></br>{comment.body}</li>
                     </ul>
                     <br></br>                 
                  </div>

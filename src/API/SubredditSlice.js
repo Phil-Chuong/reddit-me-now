@@ -7,6 +7,7 @@ const initialState = {
   error: '',
 }
 
+
 export const fetchSubredditData = createAsyncThunk('redditsSub/fetchSubredditData', async () => {
   try {
     const response = await axios.get(`https://www.reddit.com/subreddits.json`);

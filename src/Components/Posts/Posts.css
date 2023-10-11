@@ -2,25 +2,19 @@
   box-sizing: border-box;
 }
 
-.posts-container {
-   width: 100%;
-   height: auto;
-   background-color: rgb(85, 85, 91);
-   display: flex;
-   flex-wrap: wrap;
-   padding: 1rem;
-   border-radius: 10px;
-  }
-
-  .posts-container-2 {
-    width: 100%;
+  .posts-container {
+    max-width: fit-content;
     height: auto;
     background-color: #282c34;
-    margin-top: 4rem;
+    margin-top: 5rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    margin-bottom: 4rem;
     display: flex;
     flex-wrap: wrap;
     border: 1.5px solid red;
     border-radius: 10px;
+    padding: 5em;
    }
 
   .card-container {
@@ -34,46 +28,66 @@
    border-radius: 10px;
    padding: 10px;
    margin: 1rem 6rem;
+   object-fit: contain;
   }
 
   .card-header {
-   width: 100%;
+   width: 100%; 
    height: auto;
    background-color: rgb(85, 85, 91);
-   display: inline;
+   display: flex;
    flex-wrap: wrap;
+  }
+  p {
+    font-size: 2rem;
   }
 
   .title-name {
-   /* width: 100%; */
+   width: 100%;
    display: flex;
    justify-content: left;
    align-items: center;
    background-color: rgb(85, 85, 91);
    padding: 5px;
-   font-size: 1.5rem;
+   font-size: 2rem;
    font-family: 'Noto Sans KR', sans-serif;
   }
 
   .subreddit-name {
    color: red;
-   font-size: medium;
+   font-size: 2.5rem;
+  }
+
+  .subreddit-name-p {
+    color:#064282;
+    font-weight: 500;
+  }
+
+  .subreddit-author {
+    color: red;
+    font-size: 2.5rem;
+  }
+
+  .subreddit-author-p {
+    color:#064282;
+    font-weight: 500;
   }
 
   .post-info {
+    width: 100%;
     height: auto;
     background-color: rgb(85, 85, 91);
     border-radius: 10px;
     padding: 1em;
-    color: #282c34;
-    font-size: 1.1rem;
+    color: whitesmoke;
+    font-size: 2rem;
     font-family: 'Noto Sans KR', sans-serif;
   }
 
  img {
-   max-width: 100%;
-   max-height: 100%;
-   display: block;
+   width: 100%;
+   height: auto; 
+   display: flex; 
    border-radius: 10px;
  }
 
@@ -82,7 +96,7 @@ article {
 }
  .scoreboard-container { 
   display: flex;
-  width: 100%;
+  width: 100%; 
   flex-wrap: wrap;
  }
 
@@ -91,10 +105,12 @@ article {
    display: flex;
  }
 
- button {
+ #rate-button-up {
+   width: 50px;
+   height: 50px;
    color: red;
    background-color: #282c34;
-   font-size: 20px;
+   font-size: 30px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -102,30 +118,62 @@ article {
    padding:3px;
    border-radius: 5px;
  }
+
+ #rate-button-down {
+  width: 50px;
+  height: 50px;
+  color: red;
+  background-color: #282c34;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding:3px;
+  border-radius: 5px;
+}
+
  button:hover {
    color: white;
  }
 
+ .comment-container {
+  width: 5rem;
+ }
+
  .score-comment {
+   max-width: 15rem;
    display: flex;
    flex-wrap: wrap;
    justify-content: left;
    background-color: rgb(85, 85, 91);
    align-items: center;
    margin-right: auto;
+   font-size: 1.5rem;
  }
 
  .comment-button {
+  width: 50px;
+  height: 50px;
+  color: red;
   background-color: #282c34;
+  font-size: 30px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding:3px;
+  border-radius: 5px;
   
  }
 
  .num-comments {
+  width: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 5px;
+  font-size: 1.5rem;
  }
 
  

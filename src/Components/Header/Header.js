@@ -7,14 +7,10 @@ import SearchBar from "../Searchbar/Searchbar";
 
 function Header() {
     return (
-        <header className="App-header">
-            <div className="header-logo"> 
-                <div className="Logo">
-                    <FaRedditSquare className="reddit-logo"/>     
-                    <p>                    
-                        <span style={{color: 'red'}}>Reddit</span> Me Now
-                    </p>
-                </div>               
+        <header >
+            <div className="Logo">                  
+                <FaRedditSquare className="reddit-logo"/>
+                <p className="me-now"><span style={{color: 'red'}}>Reddit</span>Me Now</p>                                                    
             </div>
             <SearchBar />  
         </header>

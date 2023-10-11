@@ -1,23 +1,22 @@
-*{
-    box-sizing: border-box;
-  }
 
 .subreddit-container {
-    width: 30%;
-    height: fit-content;
+    max-width: 100%;
+    height: auto;
     background-color: rgb(85, 85, 91);
     display: flex;
-    flex-wrap: inline;
-    margin-top: 3rem;
-    margin-right: 1rem;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    margin-right: 2rem;
+    padding: 20px 80px;
 }
 
 h1 {
-    font-size: larger;
+    font-size: 3rem;
     font-family: 'Noto Sans KR', sans-serif;
     display: flex;
     justify-content: center;
-    color: red
+    color: red;
+    
 }
 
 .subreddit-list {
@@ -28,38 +27,72 @@ h1 {
     border: 1.5px solid red;
     padding: 15px;
     border-radius: 10px;
-    display: block;
+    display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
 }
 
-.subreddit-li {
+.subreddit-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
     width: 100%;
-    height: 3rem;
-    background-color: rgb(85, 85, 91);
+    height: auto;
+    /* background-color: aqua; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.subreddit-li {
+    width: 350px;
+    height: 80px;
+    /* background-color: rgb(6, 6, 114); */
     margin: 0.5rem;
     display: flex;
-    justify-content: left;
-    align-items: center;
-    font-size: larger;
-    color: red;
+    flex-wrap: wrap;
+    color: rgb(0, 255, 153);
     border-radius: 10px;
 }
 
 .users-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
     background-color: whitesmoke;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
+    margin-left: 10px;
     border: 0.5px solid red;
 }
 
-.subreddit-button {
-    width: 100%;
+.subreddit-title {
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    color: red;
+}
+
+p.subreddit-title {
     display: flex;
     justify-content: left;
+}
+
+.subreddit-button {
+    min-width: 350px;
+    display: flex;
+    flex-wrap: wrap;
     background-color: rgb(85, 85, 91);
+    justify-content: left;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: #064282 2px 3px;
+    cursor: pointer;
 }

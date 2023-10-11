@@ -1,10 +1,17 @@
-
+*{
+  box-sizing: border-box;
+  width: 100%;
+}
 .App {
-  text-align: center;
+  display: flex;
   
 }
 
-main {  
+ main {  
   background-color: rgb(85, 85, 91);
   display: flex;
-}
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  zoom: 50%;
+} 

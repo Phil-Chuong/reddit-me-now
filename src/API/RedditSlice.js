@@ -5,7 +5,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 //reddit limit to 20
 const limit = 20;
 
-//action 
+//action: Fetch Reddit posts
 export const fetchPosts = createAsyncThunk('redditPosts/fetchPosts', async () => {
   try {
   const response = await axios
@@ -16,6 +16,7 @@ export const fetchPosts = createAsyncThunk('redditPosts/fetchPosts', async () =>
   }
 });
 
+//Action: Search Reddit posts
 export const searchPosts = createAsyncThunk('redditPosts/searchPosts', async (searchQuery) => {
   try {
     const response = await axios.get(`https://www.reddit.com/search.json?q=${searchQuery}`);
@@ -35,9 +36,9 @@ const RedditPostsSlice = createSlice({
     posts: [],
     error: null,
     searchPosts: [],
-
+    
   },
-  extraReducers: (builder) => {
+    extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
         state.loading = true;
@@ -57,8 +58,9 @@ const RedditPostsSlice = createSlice({
         state.searchPosts = action.payload.data;
         state.error = null;
       })
-  }
+        }
 });
+
 
 export const { pending, fulfilled, rejected } = RedditPostsSlice.actions;
 export default RedditPostsSlice.reducer;

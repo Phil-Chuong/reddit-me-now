@@ -7,16 +7,16 @@ import { useState } from "react";
 import { TfiCommentAlt } from 'react-icons/tfi';
 import Comments from "../Comments/Comments";
 
-const Posts = () => {    
+
+const Posts = ({ subredditURL }) => {    
     const posts = useSelector((state) => state.redditPosts.posts);
-    const searchResults = useSelector((state) => state.redditPosts.searchResults);
     const loading = useSelector((state) => state.redditPosts.loading);
     const error = useSelector((state) => state.redditPosts.error);
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(fetchPosts())
-    }, [dispatch]);
+      dispatch(fetchPosts(subredditURL))
+    }, [dispatch, subredditURL]);
 
     // Voting section
     const [votedPosts, setVotedPosts] = useState({});
@@ -56,83 +56,76 @@ const Posts = () => {
 
     return (
         <div className="posts-container">
-            {searchResults && searchResults.length > 0 ? (
-                <div>
-                    {searchResults.map((result) => (
-                        <div className="search-result" key={result.id}>
-                            <p>{result.title}</p>
-                            {/* Render other search result information here */}
+            {posts.map((post) => (                      
+                <div className='card-container' key={post.id}>
+                    <section className="card-header">
+                        <div>
+                            <p className="subreddit-name-p"><span className='subreddit-name'>Subreddit: </span>{post.subreddit}</p>
                         </div>
-                    ))}
-                </div>
-            ) : (
-                <div className="posts-container-2">
-                    {posts.map((post) => (                      
-                        <div className='card-container' key={post.id}>
-                            <section className="card-header">
-                                <div><p><span className='subreddit-name'>Subreddit: </span>{post.subreddit}</p></div>
-                                <br></br>
-                                <div className="title-name"><p>{post.title}</p></div>
-                                    
-                                    <br />
-                                <div className="post-info">
-                                    <p>{post.selftext}</p>
-                                    </div>
-                            </section>
-                            <article>                               
-                                <img className='post-image'
-                                    src={post.url} alt='content'
-                                    onError={(i) => i.target.style.display = 'none'} />
-                                    <br />
-                                <div>
-                                    <p><span className='subreddit-name'>Author: </span>r/{post.author}</p>
-                                </div>
-                                <br />
-                                <aside className="scoreboard-container">
-                                    <div className="score-comment">
-                                        <button
-                                            onClick={() => handleVote(post.id, 1)}
-                                            className={votedPosts[post.id] === 1 ? "vote-up disabled" : ''}
-                                            disabled={votedPosts[post.id] === 1}>
-                                            <BiUpvote />
-                                        </button>
+                            <br></br>
+                        <div className="title-name">
+                            <p>{post.title}</p>
+                        </div>                                 
+                        <br />
+                        <div className="post-info">
+                            <p>{post.selftext}</p>
+                        </div>
+                     </section>
 
+                    <article>                               
+                        <img className='post-image'
+                            src={post.url} alt='content'
+                            onError={(i) => i.target.style.display = 'none'} />
+                                <br />
+                        <div>
+                            <p className="subreddit-author-p"><span className='subreddit-author'>Author: </span>r/{post.author}</p>
+                        </div>
+                                <br />
+                        <aside className="scoreboard-container">
+                            <div className="score-comment">
+                                <button id="rate-button-up"
+                                    onClick={() => handleVote(post.id, 1)}
+                                    className={votedPosts[post.id] === 1 ? "vote-up disabled" : ''}
+                                    disabled={votedPosts[post.id] === 1}>
+                                    <BiUpvote />
+                                </button>
                                     {post.score + (votedPosts[post.id] || 0)}
 
-                                        <button
-                                            onClick={() => handleVote(post.id, -1)}
-                                            className={votedPosts[post.id] === -1 ? "vote-down disabled" : ''}
-                                            disabled={votedPosts[post.id] === -1}>
-                                            <BiDownvote />
-                                        </button>
-                                    </div>
-                                    <div className="num-comments">
-                                        {post.num_comments}
-                                    </div>
+                                <button id="rate-button-down"
+                                    onClick={() => handleVote(post.id, -1)}
+                                    className={votedPosts[post.id] === -1 ? "vote-down disabled" : ''}
+                                    disabled={votedPosts[post.id] === -1}>
+                                     <BiDownvote />
+                                </button>
+                            </div>
+
+                            <div className="num-comments">
+                                    {post.num_comments}
+                            </div>
 
                                     {/* Add your comments button here */}
-                                    <div className="comment-container">
-                                        <button className="comment-button" 
+                            <div className="comment-container">
+                                <button className="comment-button" 
                                         onClick={()=> toggleComments(post.id)}>
                                          <TfiCommentAlt />  
                                          {showComments[post.id] ? "" : ""}
-                                        </button> 
+                                </button> 
+                            </div>
+                        </aside>
+
+                                {/* Display comments if the showComments state is true */}
+                            {showComments[post.id] && (
+                                    <div className="comments-container">
+                                        <Comments permalink={post.permalink} />
                                     </div>
-                                </aside>
-                                    {/* Display comments if the showComments state is true */}
-                                    {showComments[post.id] && (
-                                  <div className="comments-container">
-                                    <Comments permalink={post.permalink} />
-                                  </div>
-                                )}
-                            </article>
-                        </div>                                  
-                    ))}
-                </div>  
-            )}
-        </div>
+                            )}
+                    </article>
+                </div>                                  
+            ))}
+        </div>  
     )
-}                  
+}
+                 
 
 export default Posts;
 
