@@ -10,13 +10,14 @@ function SearchBar() {
     const [searchResults, setSearchResults] = useState('');
     const dispatch = useDispatch();
 
-    const handleSearch = () => {
-        dispatch(searchPosts(searchResults));
+    const handleSearch = (e) => {
+        e.preventDefault();
+        dispatch(searchPosts());
     }
 
     return (
         <div className="Search-Bar">
-            <form id='search-form'>
+            <form id='search-form' onSubmit={handleSearch}>
                 <input 
                     type="text"
                     id='search-input' 

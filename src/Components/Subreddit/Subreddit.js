@@ -1,17 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Subreddit.css';
 import { fetchSubredditData } from '../../API/SubredditSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from '../../API/RedditSlice';
 
 const Subreddit = () => {
+  const posts = useSelector((state) => state.redditPosts.posts);
   const subreddits = useSelector((state) => state.redditsSub.reddits);
   const loading = useSelector((state) => state.redditsSub.loading);
   const error = useSelector((state) => state.redditsSub.error);
   const dispatch = useDispatch();
 
+  const [selectedSubreddit, setSelectedSubreddit] = useState('');
+
   useEffect(() => {
-      dispatch(fetchSubredditData());
-  }, [dispatch]);
+    dispatch(fetchSubredditData(selectedSubreddit));
+   }, [dispatch, selectedSubreddit]);
+
+  const handleSubredditSelect = (subreddit) => {
+    setSelectedSubreddit(subreddit);
+    dispatch(fetchPosts(subreddit)); // Fetch posts for the selected subreddit
+  };
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -21,12 +31,8 @@ const Subreddit = () => {
     return <div>Error: {error.message}</div>;
   }
 
- 
-  
-const handleUserHomePage = () => {
-    return 
-  }
-  
+  // const filteredPosts = posts.filter((post) => post.subreddit === selectedSubreddit);
+
   return (
     <div className='subreddit-container'>
       <div className='subreddit-list'>
@@ -34,9 +40,9 @@ const handleUserHomePage = () => {
         <br></br>
         <div className='subreddit-items'>
           <ul>
-          {subreddits.map((subreddit) => (
+            {subreddits.map((subreddit) => (
               <li key={subreddit.id} className='subreddit-li'>
-                <button className='subreddit-button'onClick={handleUserHomePage}>
+                <button className='subreddit-button' onClick={() => handleSubredditSelect(subreddit.display_name)}>
                   <img src={subreddit.icon_img} alt='' className='users-icon'/>               
                   <p className='subreddit-title'>{subreddit.display_name}</p>
                 </button>

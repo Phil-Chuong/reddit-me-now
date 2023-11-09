@@ -1,26 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './Posts.css';
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../../API/RedditSlice";
+import { fetchPosts, searchPosts } from "../../API/RedditSlice";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
-import { useState } from "react";
 import { TfiCommentAlt } from 'react-icons/tfi';
 import Comments from "../Comments/Comments";
 
 
-const Posts = ({ subredditURL }) => {    
+const Posts = ({ subreddit }) => {   
+    // Select relevant state from the Redux store 
     const posts = useSelector((state) => state.redditPosts.posts);
+    const searchResults = useSelector((state) => state.redditPosts.searchResults);
     const loading = useSelector((state) => state.redditPosts.loading);
     const error = useSelector((state) => state.redditPosts.error);
+    
+    // Initialize local state variables
+    const [showComments, setShowComments] = useState({});
+    const [votedPosts, setVotedPosts] = useState({});
     const dispatch = useDispatch();
 
+
+    // Fetch posts on component mount or when subreddit changes
     useEffect(() => {
-      dispatch(fetchPosts(subredditURL))
-    }, [dispatch, subredditURL]);
+        const fetchData = async () => {
+            try {
+                if (!searchResults || searchResults.length === 0) {
+                    await dispatch(fetchPosts(subreddit));
+                } else {
+                    await dispatch(searchPosts(searchResults));
+                }
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+            }
+        };
+    
+        fetchData();
+    }, [dispatch, subreddit, searchResults]);
+
+
 
     // Voting section
-    const [votedPosts, setVotedPosts] = useState({});
-
     const handleVote = (postId, value) => {
         setVotedPosts((prevVotes) => {
             const newVotes = { ...prevVotes };
@@ -37,14 +56,15 @@ const Posts = ({ subredditURL }) => {
           });
     };
 
-    const [showComments, setShowComments] = useState({});
-
+   
+    // Comment section
     const toggleComments = (postId) => {
       setShowComments((prevState) => ({
         ...prevState,
         [postId]: !prevState[postId],
       }));
     };
+
 
     if (loading) {
         return <div>Loading....</div>
@@ -54,25 +74,31 @@ const Posts = ({ subredditURL }) => {
         return <div>Error: {error}</div>
     }
 
+
+    const renderPosts = posts || searchResults || [];
+
     return (
-        <div className="posts-container">
-            {posts.map((post) => (                      
+        <div className="posts-container" id="subreddit-homepage">
+            {renderPosts.map((post) => (                      
                 <div className='card-container' key={post.id}>
                     <section className="card-header">
                         <div>
-                            <p className="subreddit-name-p"><span className='subreddit-name'>Subreddit: </span>{post.subreddit}</p>
+                            <p className="subreddit-name-p"><span className='subreddit-name'>Subreddit: </span>r/{post.subreddit}</p>
                         </div>
                             <br></br>
                         <div className="title-name">
-                            <p>{post.title}</p>
+                            <p>{post.title}</p>                          
                         </div>                                 
                         <br />
-                        <div className="post-info">
-                            <p>{post.selftext}</p>
-                        </div>
-                     </section>
+                    </section>
 
-                    <article>                               
+                    <article> 
+                            {post.media && post.media.reddit_video && (
+                        <video width={post.media.reddit_video.width} height={post.media.reddit_video.height} controls>
+                            <source src={post.media.reddit_video.fallback_url} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        )}                            
                         <img className='post-image'
                             src={post.url} alt='content'
                             onError={(i) => i.target.style.display = 'none'} />

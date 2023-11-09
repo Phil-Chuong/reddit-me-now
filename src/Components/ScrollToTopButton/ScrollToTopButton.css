@@ -20,7 +20,7 @@
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 2rem;
   }
   
   .scroll-to-top-button button:hover {

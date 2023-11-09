@@ -38,6 +38,7 @@ const RedditPostsSlice = createSlice({
     searchPosts: [],
     
   },
+    reducers: {},
     extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -53,12 +54,20 @@ const RedditPostsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(searchPosts.fulfilled, (state, action) => {
-        state.loading = false;
-        state.searchPosts = action.payload.data;
+      .addCase(searchPosts.pending, (state) => {
+        state.loading = true;
         state.error = null;
       })
-        }
+      .addCase(searchPosts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.searchPosts = action.payload;
+        state.error = null;
+      })
+      .addCase(searchPosts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+  },
 });
 
 
