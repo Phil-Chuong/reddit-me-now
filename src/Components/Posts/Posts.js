@@ -21,22 +21,9 @@ const Posts = ({ subreddit }) => {
 
 
     //Fetch posts on component mount or when subreddit changes
-     useEffect(() => {
-         const fetchData = async () => {
-             try {
-                 if (!searchResults || searchResults.length === 0) {
-                     await dispatch(fetchPosts(subreddit));
-                 } else {
-                     dispatch(searchPosts(searchResults));
-                 }
-             } catch (error) {
-                 console.error("Error fetching posts:", error);
-             }
-         };
-    
-         fetchData();
-     }, [dispatch, subreddit, searchResults]);
-
+    useEffect(() => {
+        dispatch(fetchPosts(searchResults));
+      }, [dispatch, searchResults]);
 
 
     // Voting sections
@@ -75,7 +62,7 @@ const Posts = ({ subreddit }) => {
     }
 
 
-const renderPosts = posts || searchPosts || [];
+const renderPosts = posts || searchResults || [];
 
     return (
         <div className="posts-container" id="subreddit-homepage">
