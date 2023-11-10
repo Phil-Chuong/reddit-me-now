@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../../API/RedditSlice';
 
 const Subreddit = () => {
-  const posts = useSelector((state) => state.redditPosts.posts);
+  // const posts = useSelector((state) => state.redditPosts.posts);
   const subreddits = useSelector((state) => state.redditsSub.reddits);
   const loading = useSelector((state) => state.redditsSub.loading);
   const error = useSelector((state) => state.redditsSub.error);

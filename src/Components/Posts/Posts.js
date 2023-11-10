@@ -20,26 +20,26 @@ const Posts = ({ subreddit }) => {
     const dispatch = useDispatch();
 
 
-    // Fetch posts on component mount or when subreddit changes
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                if (!searchResults || searchResults.length === 0) {
-                    await dispatch(fetchPosts(subreddit));
-                } else {
-                    await dispatch(searchPosts(searchResults));
-                }
-            } catch (error) {
-                console.error("Error fetching posts:", error);
-            }
-        };
+    //Fetch posts on component mount or when subreddit changes
+     useEffect(() => {
+         const fetchData = async () => {
+             try {
+                 if (!searchResults || searchResults.length === 0) {
+                     await dispatch(fetchPosts(subreddit));
+                 } else {
+                     dispatch(searchPosts(searchResults));
+                 }
+             } catch (error) {
+                 console.error("Error fetching posts:", error);
+             }
+         };
     
-        fetchData();
-    }, [dispatch, subreddit, searchResults]);
+         fetchData();
+     }, [dispatch, subreddit, searchResults]);
 
 
 
-    // Voting section
+    // Voting sections
     const handleVote = (postId, value) => {
         setVotedPosts((prevVotes) => {
             const newVotes = { ...prevVotes };
@@ -75,7 +75,7 @@ const Posts = ({ subreddit }) => {
     }
 
 
-    const renderPosts = posts || searchResults || [];
+const renderPosts = posts || searchPosts || [];
 
     return (
         <div className="posts-container" id="subreddit-homepage">

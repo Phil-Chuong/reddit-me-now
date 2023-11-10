@@ -12,12 +12,12 @@ function SearchBar() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        dispatch(searchPosts());
+        dispatch(searchPosts(searchResults));
     }
 
     return (
         <div className="Search-Bar">
-            <form id='search-form' onSubmit={handleSearch}>
+            <form id='search-form'>
                 <input 
                     type="text"
                     id='search-input' 
