@@ -15,6 +15,14 @@ function SearchBar() {
         dispatch(searchPosts(searchResults));
     }
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            dispatch(searchPosts(searchResults));
+        }
+    }
+
+
     return (
         <div className="Search-Bar">
             <form id='search-form'>
@@ -24,6 +32,7 @@ function SearchBar() {
                     placeholder="Search"
                     value={searchResults}
                     onChange={(e) => setSearchResults(e.target.value)}
+                    onKeyPress={handleKeyPress}
                 />       
                 <button className="Search-button" >
                     <BiSearchAlt 

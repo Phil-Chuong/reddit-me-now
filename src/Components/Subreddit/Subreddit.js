@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Subreddit.css';
 import { fetchSubredditData } from '../../API/SubredditSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts } from '../../API/RedditSlice';
+// import { fetchPosts } from '../../API/RedditSlice';
 
 const Subreddit = () => {
   // const posts = useSelector((state) => state.redditPosts.posts);
@@ -19,7 +19,7 @@ const Subreddit = () => {
 
   const handleSubredditSelect = (subreddit) => {
     setSelectedSubreddit(subreddit);
-    dispatch(fetchPosts(subreddit)); // Fetch posts for the selected subreddit
+    dispatch(fetchSubredditData(subreddit)); // Fetch posts for the selected subreddit
   };
 
 
@@ -30,8 +30,6 @@ const Subreddit = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
-  // const filteredPosts = posts.filter((post) => post.subreddit === selectedSubreddit);
 
   return (
     <div className='subreddit-container'>
