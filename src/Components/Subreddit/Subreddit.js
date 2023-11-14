@@ -17,9 +17,9 @@ const Subreddit = () => {
     dispatch(fetchSubredditData(selectedSubreddit));
    }, [dispatch, selectedSubreddit]);
 
-  const handleSubredditSelect = (subreddit) => {
+   const handleSubredditSelect = (subreddit) => {
     setSelectedSubreddit(subreddit);
-    dispatch(fetchSubredditData(subreddit)); // Fetch posts for the selected subreddit
+    dispatch(fetchSubredditData(selectedSubreddit)); // Fetch posts for the selected subreddit
   };
 
 

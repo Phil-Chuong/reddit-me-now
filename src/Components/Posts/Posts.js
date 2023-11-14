@@ -6,11 +6,11 @@ import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { TfiCommentAlt } from 'react-icons/tfi';
 import Comments from "../Comments/Comments";
 
-
 const Posts = ({ subreddit }) => {   
     // Select relevant state from the Redux store 
     const posts = useSelector((state) => state.redditPosts.posts);
     const searchResults = useSelector((state) => state.redditPosts.searchPosts);
+    const selectedSubreddit = useSelector((state) => state.redditsSub && state.redditsSub.selectedSubreddit)
     const loading = useSelector((state) => state.redditPosts.loading);
     const error = useSelector((state) => state.redditPosts.error);
     
@@ -26,13 +26,16 @@ const Posts = ({ subreddit }) => {
             try {
                await dispatch(fetchPosts(subreddit));
                console.log(posts);
+               if(selectedSubreddit) {
+                console.log(selectedSubreddit)
+               }
             } catch (error) {
                 console.error("Error fetching posts:", error);
             }
         };
    
         fetchData();
-    }, [dispatch, subreddit]);
+    }, [dispatch, subreddit, selectedSubreddit]);
 
 
     // Voting sections
@@ -70,8 +73,8 @@ const Posts = ({ subreddit }) => {
         return <div>Error: {error}</div>
     }
 
-
-    //const renderPosts = posts || searchResults || [];
+    console.log(selectedSubreddit);
+    
     if(searchResults.length === 0) {
     return (
         <div className="posts-container" id="subreddit-homepage">
