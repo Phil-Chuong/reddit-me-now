@@ -31,9 +31,11 @@ const Posts = ({ subreddit }) => {
         const fetchData = async () => {
             try {
                await dispatch(fetchPosts(subreddit));
-               console.log(posts);         
-               await dispatch(fetchSubredditData(subreddit));
-                console.log(selectedSubreddit);              
+               console.log(posts); 
+               if(selectedSubreddit) {
+                await dispatch(fetchSubredditData(subreddit));
+                console.log(selectedSubreddit); 
+               }                                   
             }catch (error) {
                 console.error("Error fetching posts:", error);
             }
