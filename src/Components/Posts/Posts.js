@@ -8,7 +8,7 @@ import { TfiCommentAlt } from 'react-icons/tfi';
 import Comments from "../Comments/Comments";
 // import Subreddit from "../Subreddit/Subreddit";
 
-const Posts = ({ subreddit, reddits }) => {   
+const Posts = ({ subreddit }) => {   
     // Select relevant state from the Redux store 
     const posts = useSelector((state) => state.redditPosts.posts);
     const searchResults = useSelector((state) => state.redditPosts.searchPosts);
@@ -16,7 +16,9 @@ const Posts = ({ subreddit, reddits }) => {
     const loading = useSelector((state) => state.redditPosts.loading);
     const error = useSelector((state) => state.redditPosts.error);
 
-    console.log(selectedSubreddit);
+    // console.log(selectedSubreddit);
+    // console.log(searchResults);
+    // console.log(searchResults);
 
     // Initialize local state variables
     const [showComments, setShowComments] = useState({});
@@ -29,16 +31,16 @@ const Posts = ({ subreddit, reddits }) => {
         const fetchData = async () => {
             try {
                await dispatch(fetchPosts(subreddit));
-            //    console.log(posts);         
-               await dispatch(fetchSubredditData(reddits));
-                // console.log(selectedSubreddit);              
+               console.log(posts);         
+               await dispatch(fetchSubredditData(subreddit));
+                console.log(selectedSubreddit);              
             }catch (error) {
                 console.error("Error fetching posts:", error);
             }
         };
    
         fetchData();
-    }, [dispatch, subreddit, reddits]);
+    }, [dispatch, subreddit]);
 
 
     // Voting sections
