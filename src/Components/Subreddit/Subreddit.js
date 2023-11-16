@@ -2,26 +2,29 @@ import React, { useEffect, useState } from 'react';
 import './Subreddit.css';
 import { fetchSubredditData } from '../../API/SubredditSlice';
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchPosts } from '../../API/RedditSlice';
 
 const Subreddit = () => {
-  // const posts = useSelector((state) => state.redditPosts.posts);
   const subreddits = useSelector((state) => state.redditsSub.reddits);
   const loading = useSelector((state) => state.redditsSub.loading);
   const error = useSelector((state) => state.redditsSub.error);
   const dispatch = useDispatch();
 
-  const [selectedSubreddit, setSelectedSubreddit] = useState('');
+  // console.log(subreddits);
+
+  const [selectedSubreddit, setSelectedSubreddit] = useState(subreddits);
 
   useEffect(() => {
-    dispatch(fetchSubredditData(selectedSubreddit));
-   }, [dispatch, selectedSubreddit]);
+    if (selectedSubreddit) {
+      dispatch(fetchSubredditData(selectedSubreddit));
+    }
+  }, [dispatch, selectedSubreddit]);
 
-   const handleSubredditSelect = (subreddit) => {
-    setSelectedSubreddit(subreddit);
-    dispatch(fetchSubredditData(selectedSubreddit)); // Fetch posts for the selected subreddit
+   const handleSubredditSelect = (subreddits) => {
+    setSelectedSubreddit(subreddits);
+    // dispatch(fetchSubredditData(subreddits)); // Fetch posts for the selected subreddit
   };
 
+  console.log(selectedSubreddit);
 
   if (loading) {
     return <div>Loading...</div>;
