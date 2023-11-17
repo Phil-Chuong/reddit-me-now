@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import './Posts.css';
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../../API/RedditSlice";
+import { fetchPosts, searchPosts } from "../../API/RedditSlice";
 import { fetchSubredditData } from "../../API/SubredditSlice";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { TfiCommentAlt } from 'react-icons/tfi';
 import Comments from "../Comments/Comments";
 // import Subreddit from "../Subreddit/Subreddit";
 
-const Posts = ({ subreddit }) => {   
+const Posts = ({ subreddit, reddits }) => {   
     // Select relevant state from the Redux store 
     const posts = useSelector((state) => state.redditPosts.posts);
     const searchResults = useSelector((state) => state.redditPosts.searchPosts);
@@ -16,9 +16,9 @@ const Posts = ({ subreddit }) => {
     const loading = useSelector((state) => state.redditPosts.loading);
     const error = useSelector((state) => state.redditPosts.error);
 
-    // console.log(selectedSubreddit);
-    // console.log(searchResults);
-    // console.log(searchResults);
+    console.log(selectedSubreddit);
+    console.log(searchResults);
+    
 
     // Initialize local state variables
     const [showComments, setShowComments] = useState({});
@@ -31,18 +31,18 @@ const Posts = ({ subreddit }) => {
         const fetchData = async () => {
             try {
                await dispatch(fetchPosts(subreddit));
-               console.log(posts); 
-               if(selectedSubreddit) {
-                await dispatch(fetchSubredditData(subreddit));
-                console.log(selectedSubreddit); 
-               }                                   
+               console.log(posts);
+               await dispatch(searchPosts(subreddit));
+               console.log(searchResults); 
+               await dispatch(fetchSubredditData(reddits));
+               console.log(selectedSubreddit);                                  
             }catch (error) {
                 console.error("Error fetching posts:", error);
             }
         };
    
         fetchData();
-    }, [dispatch, subreddit]);
+    }, [dispatch, subreddit, reddits]);
 
 
     // Voting sections
@@ -157,7 +157,7 @@ const Posts = ({ subreddit }) => {
         </div>  
         )
     }
-    else if((searchResults.length === 0) || selectedSubreddit) {
+    else if(searchResults.length === 0 && selectedSubreddit) {
         const filteredPosts = posts.filter((post) => post.subreddit === selectedSubreddit);
         return (
             <div className="posts-container" id="subreddit-homepage">
