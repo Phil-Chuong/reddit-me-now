@@ -13,13 +13,15 @@ function SearchBar() {
     const handleSearch = (e) => {
         e.preventDefault();
         dispatch(searchPosts(searchResults));
+        setSearchResults('');
     }
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
             dispatch(searchPosts(searchResults));
-        }
+            setSearchResults('');
+        }       
     }
 
 

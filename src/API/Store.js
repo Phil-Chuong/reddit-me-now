@@ -9,6 +9,7 @@ const store = configureStore({
        redditPosts: RedditPostsSlice,     
        redditComments: RedditCommentsSlice,
        redditsSub: RedditsSubsSlice,
+       
     }
 });
 
