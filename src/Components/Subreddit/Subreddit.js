@@ -14,42 +14,6 @@ const Subreddit = () => {
 //  console.log(subreddits);
 //  console.log(selectedSubreddit);
 
-//  const subreddit_name = 'AskReddit';
-
-//  const selectedSubreddit = async () => {
-//    // Assuming `subreddits` is an array of subreddit objects
-//    const selectedSub = subreddits.find(subreddit => subreddit.display_name === subreddit_name);
- 
-//    if (selectedSub) {
-//      try {
-//        const response = await axios.get(`https://www.reddit.com/r/${subreddit_name}.json`);
-//        const subredditData = response.data.data.children.map((post) => post.data);
-//       console.log(subredditData);
-//       //  dispatch(fetchSubredditData(subredditData)); 
-//      } catch (error) {
-//        console.error('Error fetching subreddit data', error);
-//      }
-//    }
-//  };
-
- 
-
-
-//  const subreddit_name = 'AskReddit/';
-//  const selectedSubreddit = async () => {
-//   try {
-//     const response = await axios.get(`https://www.reddit.com/r/${subreddit_name}.json`);
-//     const subredditData = response.data.data.children.map((post) => post.data); // This will contain an array of posts on the subreddit
-    
-//     console.log(selectedSubreddit);
-//     dispatch(fetchSubredditData(subredditData)); 
-//   } catch (error) {
-//     console.error('Error fetching subreddit data', error);
-//   }
-//  };
-
-
-
  const handleSubredditSelect = (selectedSubreddit) => {
     dispatch(selectSubredditData(selectedSubreddit))
  };
