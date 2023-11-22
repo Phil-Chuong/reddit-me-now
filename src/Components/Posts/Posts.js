@@ -32,8 +32,8 @@ const Posts = ({ subreddit, subredditsPosts }) => {
             try {
                await dispatch(fetchPosts(subreddit));
                console.log(posts);
-               await dispatch(fetchPosts(subreddit));
-               console.log(searchResults); 
+            //    await dispatch(fetchPosts(subreddit));
+            //    console.log(searchResults); 
                await dispatch(fetchSubredditData(subredditsPosts));
                console.log(selectedSubreddit);                                  
             }catch (error) {
@@ -80,9 +80,21 @@ const Posts = ({ subreddit, subredditsPosts }) => {
         return <div>Error: {error}</div>
     }
 
+    switch (true) {
+        case searchResults.length === 0 && selectedSubreddit.length === 0:
+            return renderPosts(posts);
+        case searchResults.length > 0:
+            return renderPosts(searchResults);
+        case selectedSubreddit > 0 && (searchResults > 0 || searchResults === 0):
+            return renderPosts(selectedSubreddit);
+        default:
+            return renderPosts(posts);
+    }
     
     
-    if(searchResults.length === 0) {
+    // if(searchResults.length === 0) {
+
+    function renderPosts(posts, selectedSubreddit, searchResults) {
     return (
         <div className="posts-container" id="subreddit-homepage">
             {posts.map((post) => (                      
@@ -155,11 +167,8 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                 </div>                                  
             ))}
         </div>  
-        )
-    }
-    else if(selectedSubreddit && searchResults.length === 0) {
-        return (
-            <div className="posts-container" id="subreddit-homepage">
+        ) || (
+        <div className="posts-container" id="subreddit-homepage">
             {selectedSubreddit.map((post) => (                      
                 <div className='card-container' key={post.id}>
                     <section className="card-header">
@@ -230,12 +239,9 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                 </div>                                  
             ))}
         </div> 
-        )
-    }
-    else{
-        return (
-            <div className="posts-container" id="subreddit-homepage">
-            {searchResults.map((post) => (                      
+        ) || (
+        <div className="posts-container" id="subreddit-homepage">
+             {searchResults.map((post) => (                      
                 <div className='card-container' key={post.id}>
                     <section className="card-header">
                         <div>
@@ -305,8 +311,16 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                 </div>                                  
             ))}
         </div> 
-        )
-    }  
+        ) 
+    }
+    // }
+    // else if(selectedSubreddit && searchResults.length === 0) {
+    //     
+    // }
+    // else{
+    //     return (
+    //         
+    // }  
 }         
 
 export default Posts;
