@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './Posts.css';
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts, searchPosts } from "../../API/RedditSlice";
+import { fetchPosts } from "../../API/RedditSlice";
 import { fetchSubredditData } from "../../API/SubredditSlice";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { TfiCommentAlt } from 'react-icons/tfi';
 import Comments from "../Comments/Comments";
-// import Subreddit from "../Subreddit/Subreddit";
+
 
 const Posts = ({ subreddit, subredditsPosts }) => {   
     // Select relevant state from the Redux store 
@@ -32,8 +32,6 @@ const Posts = ({ subreddit, subredditsPosts }) => {
             try {
                await dispatch(fetchPosts(subreddit));
                console.log(posts);
-            //    await dispatch(fetchPosts(subreddit));
-            //    console.log(searchResults); 
                await dispatch(fetchSubredditData(subredditsPosts));
                console.log(selectedSubreddit);                                  
             }catch (error) {
@@ -79,20 +77,7 @@ const Posts = ({ subreddit, subredditsPosts }) => {
     if (error) {
         return <div>Error: {error}</div>
     }
-
-    // switch (true) {
-    //     case searchResults.length === 0 && selectedSubreddit.length === 0:
-    //         return renderPosts(posts);          
-    //     case selectedSubreddit.length > 0 && (searchResults > 0 || searchResults === 0):
-    //         return renderPosts(selectedSubreddit);
-    //     case searchResults.length > 0:
-    //         return renderPosts(searchResults);
-    //     default:
-    //         return renderPosts(posts);
-         
-    // }
     
-
     let renderedPosts;
 
     if (searchResults.length > 0) {
