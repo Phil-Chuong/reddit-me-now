@@ -99,8 +99,6 @@ const Posts = ({ subreddit, subredditsPosts }) => {
         renderedPosts = searchResults;
     } else if (selectedSubreddit.length > 0) {
         renderedPosts = selectedSubreddit;
-    } else if (searchResults.length === 0 && selectedSubreddit.length > 0) {
-        renderedPosts = selectedSubreddit;
     }
     else {
         renderedPosts = posts;

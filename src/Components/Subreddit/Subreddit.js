@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import './Subreddit.css';
-import { fetchSubredditData, selectSubredditData } from '../../API/SubredditSlice';
+import { selectSubredditData } from '../../API/SubredditSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 
 const Subreddit = () => {
-  const selectedSubreddit = useSelector((state) => state.redditsSub.subredditsPosts);
   const subreddits = useSelector((state) => state.redditsSub.reddits);
   const loading = useSelector((state) => state.redditsSub.loading);
   const error = useSelector((state) => state.redditsSub.error);
