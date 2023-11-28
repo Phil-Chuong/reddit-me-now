@@ -2,14 +2,14 @@
     width: 100%;
     height: auto;
     display: flex;
-    background-color: rgb(145, 14, 14);
+    background-color: #054f9d;
     margin: 2rem;
     padding: 1rem;
-    box-shadow: 5px 5px 10px 0px #054f9d;
+    box-shadow: 5px 5px 10px 0px rgb(145, 14, 14);
 }
 
 .reddit-id {
-    color:#064282;
+    color:rgb(100, 14, 14);
     font-weight: 700;
     font-size: 2rem;
 

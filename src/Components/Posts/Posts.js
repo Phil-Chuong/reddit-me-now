@@ -15,9 +15,11 @@ const Posts = ({ subreddit, subredditsPosts }) => {
     const selectedSubreddit = useSelector((state) => state.redditsSub.subredditsPosts);
     const loading = useSelector((state) => state.redditPosts.loading);
     const error = useSelector((state) => state.redditPosts.error);
+    const popularPost = posts;
 
     // console.log(selectedSubreddit);
     // console.log(searchResults);
+    // console.log(popularPost);
     
 
     // Initialize local state variables
@@ -33,7 +35,7 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                await dispatch(fetchPosts(subreddit));
                console.log(posts);
                await dispatch(fetchSubredditData(subredditsPosts));
-               console.log(selectedSubreddit);                                  
+               console.log(selectedSubreddit);                              
             }catch (error) {
                 console.error("Error fetching posts:", error);
             }
@@ -54,10 +56,9 @@ const Posts = ({ subreddit, subredditsPosts }) => {
             } else {
               // Otherwise, update their vote
               newVotes[postId] = value;
-            }
-        
+            }      
             return newVotes;
-          });
+        });
     };
 
    
@@ -77,18 +78,22 @@ const Posts = ({ subreddit, subredditsPosts }) => {
     if (error) {
         return <div>Error: {error}</div>
     }
+
     
     let renderedPosts;
 
     if (searchResults.length > 0) {
         renderedPosts = searchResults;
+    } else if (popularPost.length > 0) {
+        renderedPosts = posts;      
     } else if (selectedSubreddit.length > 0) {
         renderedPosts = selectedSubreddit;
+        console.log(selectedSubreddit);
     }
     else {
         renderedPosts = posts;
     }
-
+    
     return (
         <div className="posts-container" id="subreddit-homepage">
             {renderedPosts.map((post) => (                      
@@ -106,57 +111,61 @@ const Posts = ({ subreddit, subredditsPosts }) => {
 
                     <article> 
                             {post.media && post.media.reddit_video && (
-                        <video width={post.media.reddit_video.width} height={post.media.reddit_video.height} controls>
+                            <video width={post.media.reddit_video.width} height={post.media.reddit_video.height} controls>
                             <source src={post.media.reddit_video.fallback_url} type="video/mp4" />
                             Your browser does not support the video tag.
-                        </video>
-                        )}                            
-                        <img className='post-image'
+                            </video>
+                            )}                            
+                            <img className='post-image'
                             src={post.url} alt='content'
                             onError={(i) => i.target.style.display = 'none'} />
                                 <br />
-                        <div>
-                            <p className="subreddit-author-p"><span className='subreddit-author'>Author: </span>r/{post.author}</p>
-                        </div>
-                                <br />
-                        <aside className="scoreboard-container">
-                            <div className="score-comment">
-                                <button id="rate-button-up"
-                                    onClick={() => handleVote(post.id, 1)}
-                                    className={votedPosts[post.id] === 1 ? "vote-up disabled" : ''}
-                                    disabled={votedPosts[post.id] === 1}>
-                                    <BiUpvote />
-                                </button>
-                                    {post.score + (votedPosts[post.id] || 0)}
-
-                                <button id="rate-button-down"
-                                    onClick={() => handleVote(post.id, -1)}
-                                    className={votedPosts[post.id] === -1 ? "vote-down disabled" : ''}
-                                    disabled={votedPosts[post.id] === -1}>
-                                     <BiDownvote />
-                                </button>
-                            </div>
-
-                            <div className="num-comments">
-                                    {post.num_comments}
-                            </div>
-
-                                    {/* Add your comments button here */}
-                            <div className="comment-container">
-                                <button className="comment-button" 
-                                        onClick={()=> toggleComments(post.id)}>
-                                         <TfiCommentAlt />  
-                                         {showComments[post.id] ? "" : ""}
-                                </button> 
-                            </div>
-                        </aside>
-
-                                {/* Display comments if the showComments state is true */}
-                            {showComments[post.id] && (
-                                    <div className="comments-container">
-                                        <Comments permalink={post.permalink} />
+                                <div className="card-footer">
+                                    <div>
+                                        <p className="subreddit-author-p"><span className='subreddit-author'>Author: </span>r/{post.author}</p>
                                     </div>
-                            )}
+                                    <br />
+                                    
+                                    <aside className="scoreboard-container">
+                                        <div className="score-comment">
+                                            <button id="rate-button-up"
+                                                    onClick={() => handleVote(post.id, 1)}
+                                                    className={votedPosts[post.id] === 1 ? "vote-up disabled" : ''}
+                                                    disabled={votedPosts[post.id] === 1}>
+                                                    <BiUpvote />
+                                            </button>
+                                            {post.score + (votedPosts[post.id] || 0)}
+
+                                            <button id="rate-button-down"
+                                                    onClick={() => handleVote(post.id, -1)}
+                                                    className={votedPosts[post.id] === -1 ? "vote-down disabled" : ''}
+                                                    disabled={votedPosts[post.id] === -1}>
+                                                    <BiDownvote />
+                                            </button>
+                                        </div>
+
+                                        <div className="num-comments">
+                                            {post.num_comments}
+                                        </div>
+
+                                            {/* Add your comments button here */}
+                                        <div className="comment-container">
+                                            <button className="comment-button" 
+                                                    onClick={()=> toggleComments(post.id)}>
+                                                    <TfiCommentAlt />  
+                                                    {showComments[post.id] ? "" : ""}
+                                            </button> 
+                                        </div>
+                                    </aside>
+                                </div>
+                                
+                            {/* Display comments if the showComments state is true */}
+                            {showComments[post.id] && 
+                            (
+                                <div className="comments-container">
+                                        <Comments permalink={post.permalink} />
+                                </div>
+                            )};
                     </article>
                 </div>                                  
             ))}

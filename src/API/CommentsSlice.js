@@ -1,6 +1,6 @@
- import { createSlice } from "@reduxjs/toolkit";
- import axios from "axios";
- import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: false,
@@ -23,8 +23,8 @@ export const fetchComments = createAsyncThunk('redditComments/fetchComments', as
 );
 
 
-   //create slice & reducer
- const RedditCommentsSlice = createSlice({
+//create slice & reducer
+const RedditCommentsSlice = createSlice({
      name: 'redditComments',
      initialState,
      extraReducers: (builder) => {
@@ -42,8 +42,8 @@ export const fetchComments = createAsyncThunk('redditComments/fetchComments', as
          state.error = action.error;
        });
     },
- })
+})
 
- export const { pending, fulfilled, rejected } = RedditCommentsSlice.actions;
+export const { pending, fulfilled, rejected } = RedditCommentsSlice.actions;
 export default RedditCommentsSlice.reducer;
 

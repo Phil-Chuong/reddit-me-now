@@ -6,7 +6,7 @@ const ScrollToTopButton = () => {
 
   // Function to scroll back to the top of the page
   const scrollToTop = () => {
-    window.scrollTo({
+      window.scrollTo({
       top: 0,
       behavior: 'smooth', // Add smooth scrolling behavior
     });
@@ -23,7 +23,7 @@ const ScrollToTopButton = () => {
 
   // Add a scroll event listener to check the user's scroll position
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

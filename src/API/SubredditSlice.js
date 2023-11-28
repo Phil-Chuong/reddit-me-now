@@ -32,6 +32,11 @@ const initialState = {
 const RedditsSubsSlice = createSlice({
   name: 'redditsSub',
   initialState,
+  reducers: {
+    clearSubredditPosts: (state) => {
+      state.subredditsPosts = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
     .addCase(fetchSubredditData.pending, (state) => {
@@ -61,4 +66,5 @@ const RedditsSubsSlice = createSlice({
  },
 })
 
+export const {clearSubredditPosts} = RedditsSubsSlice.actions;
 export default RedditsSubsSlice.reducer;

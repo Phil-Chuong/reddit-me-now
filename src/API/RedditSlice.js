@@ -38,7 +38,14 @@ const RedditPostsSlice = createSlice({
     searchPosts: [],
     
   },
-    reducers: {},
+    reducers: {
+      clearSearchPosts: (state) => {
+        state.searchPosts = [];
+      },
+      clearPosts: (state) => {
+        state.posts = [];
+      }
+    },
     extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -71,5 +78,5 @@ const RedditPostsSlice = createSlice({
 });
 
 
-export const { pending, fulfilled, rejected } = RedditPostsSlice.actions;
+export const { pending, fulfilled, rejected, clearSearchPosts, clearPosts } = RedditPostsSlice.actions;
 export default RedditPostsSlice.reducer;

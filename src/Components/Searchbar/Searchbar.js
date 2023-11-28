@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './Searchbar.css';
 import { BiSearchAlt } from 'react-icons/bi';
 import { useDispatch } from "react-redux";
-import { searchPosts } from "../../API/RedditSlice";
+import { searchPosts, clearSearchPosts } from "../../API/RedditSlice";
 
 
 function SearchBar() {
@@ -13,16 +13,20 @@ function SearchBar() {
     const handleSearch = (e) => {
         e.preventDefault();
         dispatch(searchPosts(searchResults));
+
+        dispatch(clearSearchPosts());
         setSearchResults('');
-    }
+    };
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
             dispatch(searchPosts(searchResults));
+
+            dispatch(clearSearchPosts());
             setSearchResults('');
         }       
-    }
+    };
 
 
     return (
@@ -42,8 +46,8 @@ function SearchBar() {
                     onClick={handleSearch}/>
                 </button>
             </form>
-         </div>
-    )
-}
+        </div>
+    );
+};
 
 export default SearchBar;

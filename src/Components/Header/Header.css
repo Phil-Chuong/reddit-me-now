@@ -1,36 +1,55 @@
 header {
-    /* width: 100%; */
-    max-height: 200px;
-    background-color: #282c34;
-    min-height: 9vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    padding-left: 10px;
-    zoom: 75%;
-  }
+  /* width: 100%; */
+  max-height: 200px;
+  background-color: #282c34;
+  min-height: 9vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding-left: 10px;
+  zoom: 75%;
+}
 
 /* Logo section*/
 
 .Logo {
-    min-width: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 svg.reddit-logo {
-    width: 100px;
-    height: 100px;
-    color: red;
-    margin-right: 20px;
+  width: 100px;
+  height: 100px;
+  color: red;
+  margin-right: 20px;
 }
 
 span {
-    width: auto;
-    font-size: 55px;
-    margin-right: 10px;
-  }
+  width: auto;
+  font-size: 55px;
+  margin-right: 10px;
+}
 
+/* Mobile View Max 600px */
+@media only screen and (max-width: 600px) {
+  header {
+    background: #282c34;
+    display: inline-block;
+  }
+  .Logo {
+    display: flex;
+    justify-content:end;
+    align-items:flex-end;
+  }
+  #search-form {
+    display: flex;
+    justify-content: center;
+  }
+  svg.reddit-logo {
+    padding-top: 20px;
+  }
+}
