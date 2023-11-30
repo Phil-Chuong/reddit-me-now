@@ -102,10 +102,6 @@ article {
   object-fit: contain;
 }
 
-.media-container {
-  /* background-color: aqua; */
-}
-
 .card-footer {
   display: inline;
   background-color: chocolate;

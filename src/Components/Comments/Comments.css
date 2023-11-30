@@ -1,6 +1,6 @@
 .replies-container {
-    width: 100%;
-    height: auto;
+    width: 90%;
+    height: fit-content;
     display: flex;
     background-color: #054f9d;
     margin: 2rem;
