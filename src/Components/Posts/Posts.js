@@ -111,7 +111,14 @@ const Posts = ({ subreddit, subredditsPosts }) => {
 
                     <article> 
                             {post.media && post.media.reddit_video && (
-                            <video width={post.media.reddit_video.width} height={post.media.reddit_video.height} controls>
+                            <video 
+                                width={post.media.reddit_video.width} 
+                                height={post.media.reddit_video.height} 
+                                style={{
+                                    maxHeight: '600px', 
+                                    width: '100%',
+                                  }}
+                                controls>
                             <source src={post.media.reddit_video.fallback_url} type="video/mp4" />
                             Your browser does not support the video tag.
                             </video>
@@ -143,13 +150,12 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                                                     <BiDownvote />
                                             </button>
                                         </div>
-
-                                        <div className="num-comments">
-                                            {post.num_comments}
-                                        </div>
-
+                                        
                                             {/* Add your comments button here */}
                                         <div className="comment-container">
+                                            <div className="num-comments">
+                                                {post.num_comments}
+                                            </div>
                                             <button className="comment-button" 
                                                     onClick={()=> toggleComments(post.id)}>
                                                     <TfiCommentAlt />  
@@ -165,7 +171,7 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                                 <div className="comments-container">
                                         <Comments permalink={post.permalink} />
                                 </div>
-                            )};
+                            )}
                     </article>
                 </div>                                  
             ))}

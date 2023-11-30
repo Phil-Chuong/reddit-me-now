@@ -18,7 +18,7 @@ const Subreddit = () => {
 
  // State to manage dropdown visibility
 const [isDropdownVisible, setDropdownVisible] = useState(false);
-const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 425);
+const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 375);
 
 
 // Toggle dropdown visibility
