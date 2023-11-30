@@ -42,7 +42,7 @@ const Posts = ({ subreddit, subredditsPosts }) => {
         };
    
         fetchData();
-    }, [dispatch, subreddit, subredditsPosts]);
+    }, [dispatch, subreddit, subredditsPosts, posts, selectedSubreddit]);
 
 
     // Voting sections
