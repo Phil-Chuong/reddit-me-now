@@ -110,60 +110,64 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                     </section>
 
                     <article> 
-                            {post.media && post.media.reddit_video && (
-                            <video 
-                                width={post.media.reddit_video.width} 
-                                height={post.media.reddit_video.height} 
-                                style={{
-                                    maxHeight: '600px', 
+                            <div className="media-container">
+                               {post.media && post.media.reddit_video && (
+                                <video 
+                                    width={post.media.reddit_video.width} 
+                                    height={post.media.reddit_video.height} 
+                                    style={{
+                                    maxHeight: '50em', 
                                     width: '100%',
-                                  }}
-                                controls>
-                            <source src={post.media.reddit_video.fallback_url} type="video/mp4" />
-                            Your browser does not support the video tag.
-                            </video>
-                            )}                            
-                            <img className='post-image'
-                            src={post.url} alt='content'
-                            onError={(i) => i.target.style.display = 'none'} />
-                                <br />
-                                <div className="card-footer">
-                                    <div>
-                                        <p className="subreddit-author-p"><span className='subreddit-author'>Author: </span>r/{post.author}</p>
-                                    </div>
+                                    }}
+                                    controls>
+                                    <source src={post.media.reddit_video.fallback_url} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                                )}                            
+                                <img className='post-image'
+                                        src={post.url} alt='content'
+                                        onError={(i) => i.target.style.display = 'none'} />
+                                <br /> 
+                            </div>                         
+
+                            <div className="card-footer">
+                                <div>
+                                    <p className="subreddit-author-p"><span className='subreddit-author'>Author: </span>r/{post.author}</p>
+                                </div>
                                     <br />
                                     
-                                    <aside className="scoreboard-container">
-                                        <div className="score-comment">
-                                            <button id="rate-button-up"
-                                                    onClick={() => handleVote(post.id, 1)}
-                                                    className={votedPosts[post.id] === 1 ? "vote-up disabled" : ''}
-                                                    disabled={votedPosts[post.id] === 1}>
-                                                    <BiUpvote />
-                                            </button>
+                                <aside className="scoreboard-container">
+                                    <div className="score-comment">
+                                        <button id="rate-button-up"
+                                                onClick={() => handleVote(post.id, 1)}
+                                                className={votedPosts[post.id] === 1 ? "vote-up disabled" : ''}
+                                                disabled={votedPosts[post.id] === 1}>
+                                                <BiUpvote />
+                                        </button>
                                             {post.score + (votedPosts[post.id] || 0)}
 
-                                            <button id="rate-button-down"
-                                                    onClick={() => handleVote(post.id, -1)}
-                                                    className={votedPosts[post.id] === -1 ? "vote-down disabled" : ''}
-                                                    disabled={votedPosts[post.id] === -1}>
-                                                    <BiDownvote />
-                                            </button>
-                                        </div>
+                                        <button id="rate-button-down"
+                                                onClick={() => handleVote(post.id, -1)}
+                                                className={votedPosts[post.id] === -1 ? "vote-down disabled" : ''}
+                                                disabled={votedPosts[post.id] === -1}>
+                                                <BiDownvote />
+                                        </button>
+                                    </div>
                                         
                                             {/* Add your comments button here */}
-                                        <div className="comment-container">
-                                            <div className="num-comments">
-                                                {post.num_comments}
-                                            </div>
-                                            <button className="comment-button" 
-                                                    onClick={()=> toggleComments(post.id)}>
-                                                    <TfiCommentAlt />  
-                                                    {showComments[post.id] ? "" : ""}
-                                            </button> 
+                                    <div className="comment-container">
+                                        <div className="num-comments">
+                                            {post.num_comments}
                                         </div>
-                                    </aside>
-                                </div>
+
+                                        <button className="comment-button" 
+                                                onClick={()=> toggleComments(post.id)}>
+                                                <TfiCommentAlt />  
+                                                {showComments[post.id] ? "" : ""}
+                                        </button> 
+                                    </div>
+                                </aside>
+                            </div>
                                 
                             {/* Display comments if the showComments state is true */}
                             {showComments[post.id] && 

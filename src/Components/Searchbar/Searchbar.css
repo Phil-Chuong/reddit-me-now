@@ -9,6 +9,7 @@
 
 #search-form {
     display: flex;
+    justify-content: center;
 }
 
 input {
