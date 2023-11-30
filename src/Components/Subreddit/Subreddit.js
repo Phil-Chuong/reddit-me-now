@@ -27,9 +27,9 @@ const toggleDropdown = () => {
 };
 
 // Close dropdown when clicking outside
-const closeDropdown = () => {
-    setDropdownVisible(false);
-};
+// const closeDropdown = () => {
+//     setDropdownVisible(false);
+// };
 
  const handleSubredditSelect = (selectedSubreddit) => {
     dispatch(clearSearchPosts());

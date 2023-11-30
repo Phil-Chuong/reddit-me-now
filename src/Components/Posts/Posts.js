@@ -33,16 +33,16 @@ const Posts = ({ subreddit, subredditsPosts }) => {
         const fetchData = async () => {
             try {
                await dispatch(fetchPosts(subreddit));
-               console.log(posts);
+            //    console.log(posts);
                await dispatch(fetchSubredditData(subredditsPosts));
-               console.log(selectedSubreddit);                              
+            //    console.log(selectedSubreddit);                              
             }catch (error) {
                 console.error("Error fetching posts:", error);
             }
         };
    
         fetchData();
-    }, [dispatch, subreddit, subredditsPosts, posts, selectedSubreddit]);
+    }, [dispatch, subreddit, subredditsPosts]);
 
 
     // Voting sections
