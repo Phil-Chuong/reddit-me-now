@@ -40,10 +40,10 @@ function SearchBar() {
                     onChange={(e) => setSearchResults(e.target.value)}
                     onKeyPress={handleKeyPress}
                 />       
-                <button className="Search-button" >
+                <button className="Search-button" data-testid="search-button" onClick={handleSearch}>
                     <BiSearchAlt 
                     className="Search-icon" 
-                    onClick={handleSearch}/>
+                    />
                 </button>
             </form>
         </div>
