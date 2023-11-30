@@ -204,8 +204,8 @@ button:hover {
 }
 
 
- /* Mobile View Max 600px */
-@media only screen and (max-width: 375px) {
+ /* Mobile View Max 425px */
+@media only screen and (max-width: 425px) {
 
   div.posts-container {
     padding: 1em;
@@ -215,6 +215,10 @@ button:hover {
   div.card-container {
     padding: 30px;
     margin: 5px;
+  }
+
+  .vid {
+    height: 400px;
   }
     
 }

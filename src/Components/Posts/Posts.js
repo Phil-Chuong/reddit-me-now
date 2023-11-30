@@ -113,6 +113,7 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                             <div className="media-container">
                                {post.media && post.media.reddit_video && (
                                 <video 
+                                    className="vid"
                                     width={post.media.reddit_video.width} 
                                     height={post.media.reddit_video.height} 
                                     style={{
