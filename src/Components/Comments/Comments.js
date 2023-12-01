@@ -29,19 +29,20 @@ const Comments = ({permalink}) => {
         </div>
     }
 
-    return (
-          
-         <div className="comments-treads">
-             {comments.map((comment) => (
-                 <div key={comment.id} className="replies-container" >
-                    <ul className="reddit-id">{comment.author}
+    return (        
+        <div className="comments-treads">
+            {comments.map((comment) => (
+                <div key={comment.id} className="replies-container" >                            
+                    <div className="reddit-id">
+                        {comment.author}
+                    </div>
+                    <ul>
                         <li className="replies"><br></br>{comment.body}</li>
                     </ul>
-                    <br></br>                 
-                 </div>
-
-             ))}
-         </div>
+                    <br></br>    
+                </div>  
+            ))}
+        </div>
     );
 };
 

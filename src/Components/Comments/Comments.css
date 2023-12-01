@@ -1,11 +1,13 @@
+
 .replies-container {
-    width: 90%;
+    width: 100%;
     height: fit-content;
     display: flex;
     background-color: #054f9d;
     margin: 2rem;
     padding: 1rem;
     box-shadow: 5px 5px 10px 0px rgb(145, 14, 14);
+    flex-wrap: wrap;
 }
 
 .reddit-id {
@@ -15,6 +17,8 @@
 
 }
 
-.replies {
-    color: whitesmoke;
+li.replies {
+    font-size: 15px;
+    color: rgb(245, 245, 245);
+    width: 100%;
 }
