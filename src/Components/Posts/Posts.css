@@ -205,12 +205,12 @@ button:hover {
 
   div.posts-container {
     padding: 1em;
-    margin: 5px;
+    margin: 10px;
   }
 
   div.card-container {
     padding: 30px;
-    margin: 5px;
+    margin: 15px 0px;
   }
 
   .vid {
