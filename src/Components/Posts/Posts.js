@@ -124,10 +124,15 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                                     <source src={post.media.reddit_video.fallback_url} type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
-                                )}                            
-                                <img className='post-image'
+                                )}
+                                <picture srcSet="image.webp" 
+                                         type="image/webp">
+                                    <img className='post-image'
                                         src={post.url} alt='content'
+                                        
                                         onError={(i) => i.target.style.display = 'none'} />
+                                </picture>                            
+                                
                                 <br /> 
                             </div>                         
 
