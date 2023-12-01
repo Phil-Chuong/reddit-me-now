@@ -128,6 +128,7 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                                 <picture srcSet="path/to/image.webp, path/to/image.avif" type="image/webp, image/avif">
                                     <img className='post-image'
                                         src={post.url} alt='content'
+                                        loading="lazy"
                                         width="640" 
                                         height="360"
                                         onError={(i) => i.target.style.display = 'none'} />
