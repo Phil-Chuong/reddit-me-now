@@ -125,8 +125,9 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                                     Your browser does not support the video tag.
                                 </video>
                                 )}
-                                <picture srcSet="image.webp" 
-                                         type="image/webp">
+                                <picture>
+                                    <source srcSet="path/to/image.webp" type="image/webp" />
+                                    <source srcSet="path/to/image.avif" type="image/avif" />
                                     <img className='post-image'
                                         src={post.url} alt='content'
                                         width="640" 
