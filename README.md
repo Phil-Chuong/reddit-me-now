@@ -15,8 +15,10 @@ Open ( https://reddit-me-now.netlify.app ) to view it in your browser.
 ## Technologies Used
 
 - React: A JavaScript library for building user interfaces.
+- CSS: gives a website its look and layout.
 - Redux: A state management library for React applications.
 - Reddit API: Used to fetch Reddit data and integrate it into the app.
+- Git-Hub: Version control on application with Git and host the repository on GitHub
 
 ## Wireframe
 
@@ -45,5 +47,6 @@ Open ( https://reddit-me-now.netlify.app ) to view it in your browser.
 
 ## Future works
 - Allow to view comments replies section.
+- Fix minor bugs or color aterations.
 
 
