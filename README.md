@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Reddit-Me-Now
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Reddit Me Now App is a web application that allows users to explore and interact with Reddit content in a user-friendly interface.
 
-## Available Scripts
+Open ( https://reddit-me-now.netlify.app ) to view it in your browser.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Subreddit Exploration:** Browse through different subreddits to discover a variety of content.
+- **Post Interaction:** Upvote, downvote.
+- **Comments Section:** Explore and participate in discussions by viewing and adding comments.
+- **Search:** Search for any topic or post through Reddit API.
+- **Media Support:** View images and videos directly within the app for a seamless browsing experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React: A JavaScript library for building user interfaces.
+- CSS: gives a website its look and layout.
+- Redux: A state management library for React applications.
+- Reddit API: Used to fetch Reddit data and integrate it into the app.
+- Git-Hub: Version control on application with Git and host the repository on GitHub
 
-### `npm test`
+## Wireframe
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  ![Wireframe Reddit me now](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/6df0edeb-578a-4876-b4da-eca23671e0fa)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## View mode
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Desktop mode
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ![image](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/f1308ab8-8dc0-4a2d-b9c1-5c3000700b39)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Moblie mode
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  ![image](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/1d343851-c09b-4f84-967a-325dd98db610)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Webpage speed test
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Performance test via PageSpeed Insights.
+  Poor performance due to Reddits Images format.
 
-## Learn More
+  ![PageSpeed Insights](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/746703ad-89c2-4f43-a983-2b6b0219f296)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  ![PageSpeed Insights detail](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/f0cd13d9-6710-49d1-95d8-3dc750d9753a)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Future works
+- Allow to view comments replies section.
+- Fix minor bugs or color aterations.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
