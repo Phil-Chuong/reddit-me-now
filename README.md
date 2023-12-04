@@ -32,10 +32,14 @@ Open ( https://reddit-me-now.netlify.app ) to view it in your browser.
 
   ![image](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/f1308ab8-8dc0-4a2d-b9c1-5c3000700b39)
 
+  ![Comment section](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/08885b0e-ee94-4f4e-9ef4-6a40be0236b9)
+
+
 
 - Moblie mode
 
-  ![image](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/1d343851-c09b-4f84-967a-325dd98db610)
+  ![image](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/1d343851-c09b-4f84-967a-325dd98db610)  ![Drop down Subreddit](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/bd085f2c-b2b2-4fe3-8a38-c1b7c622f1d1)
+
 
 ## Webpage speed test
 
