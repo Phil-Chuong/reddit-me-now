@@ -38,7 +38,8 @@ Open ( https://reddit-me-now.netlify.app ) to view it in your browser.
 
 - Moblie mode
 
-  ![image](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/1d343851-c09b-4f84-967a-325dd98db610)  ![Drop down Subreddit](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/bd085f2c-b2b2-4fe3-8a38-c1b7c622f1d1)
+  ![image](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/1d343851-c09b-4f84-967a-325dd98db610)          ![image](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/e7a5acc0-4600-4cfe-bae3-6c832b594044)
+
 
 
 ## Webpage speed test
