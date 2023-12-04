@@ -129,8 +129,8 @@ const Posts = ({ subreddit, subredditsPosts }) => {
                                     <img className='post-image'
                                         src={post.url} alt='content'
                                         loading="lazy"
-                                        width="640" 
-                                        height="360"
+                                        width="840" 
+                                        height="560"
                                         onError={(i) => i.target.style.display = 'none'} />
                                 </picture>                            
                                 
