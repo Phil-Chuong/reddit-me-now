@@ -19,6 +19,7 @@ Open ( https://reddit-me-now.netlify.app ) to view it in your browser.
 - Redux: A state management library for React applications.
 - Reddit API: Used to fetch Reddit data and integrate it into the app.
 - Git-Hub: Version control on application with Git and host the repository on GitHub
+- Netify: To deploy web application online.
 
 ## Wireframe
 
