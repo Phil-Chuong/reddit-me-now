@@ -20,6 +20,9 @@ Open ( https://reddit-me-now.netlify.app ) to view it in your browser.
 
 ## Wireframe
 
+  ![Wireframe Reddit me now](https://github.com/Phil-Chuong/reddit-me-now/assets/68432036/6df0edeb-578a-4876-b4da-eca23671e0fa)
+
+
 ## View mode
 
 - Desktop mode
