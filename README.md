@@ -12,7 +12,7 @@ Open ( https://reddit-me-now.netlify.app ) to view it in your browser.
 - **Search:** Search for any topic or post through Reddit API.
 - **Media Support:** View images and videos directly within the app for a seamless browsing experience.
 
-## Technologies Used
+## Tech Stack
 
 - React: A JavaScript library for building user interfaces.
 - CSS: gives a website its look and layout.
